@@ -153,7 +153,7 @@ const Projects = () => {
         background: 'linear-gradient(to top, rgba(181,195,211,0.45) 0%, rgba(181,195,211,0.15) 35%, transparent 65%)'
       }} />
 
-      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch" style={{ maxHeight: '75vh' }}>
+      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch" style={{ height: '75vh' }}>
         {/* Tabs */}
         <div className="flex flex-wrap gap-2 mb-0">
           {categories.map((cat) => (
@@ -178,10 +178,10 @@ const Projects = () => {
         </div>
 
         {/* Table */}
-        <div className="w-full rounded-[14px] overflow-hidden" style={{ maxHeight: '480px', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
+        <div className="w-full rounded-[14px] overflow-hidden flex-1 min-h-0" style={{ overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
           <table className="w-full text-left text-[clamp(12px,1vw,14px)]">
             <thead className="sticky top-0">
-              <tr className="bg-[rgba(86,115,149,0.18)]">
+              <tr className="bg-white">
                 <th className="px-4 py-3 font-medium text-foreground">{headers[0]}</th>
                 <th className="px-4 py-3 font-medium text-foreground">{headers[1]}</th>
                 <th className="px-4 py-3 font-medium text-foreground">{headers[2]}</th>
