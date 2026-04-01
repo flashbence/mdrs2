@@ -9,7 +9,7 @@ const About = () => {
         <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-tight text-foreground mb-8">
           {t("about.title")}
         </h1>
-        <div className="space-y-5 text-muted-foreground leading-relaxed text-sm md:text-base">
+        <div className="space-y-5 text-muted-foreground leading-relaxed text-[clamp(14px,1.08vw,16px)] font-light">
           <p>{t("about.p1")}</p>
           <p>{t("about.p2")}</p>
           <p>{t("about.p3")}</p>
