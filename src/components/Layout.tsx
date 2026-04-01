@@ -43,13 +43,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          {/* Language switcher */}
+        <div className="flex items-center gap-1">
+          {/* Language switcher - two separate buttons */}
           <button
-            onClick={() => setLang(lang === "hu" ? "en" : "hu")}
-            className="text-xs font-semibold tracking-widest border border-border rounded px-3 py-1.5 hover:bg-secondary transition-colors uppercase"
+            onClick={() => setLang("en")}
+            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
+              lang === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
           >
-            {lang === "hu" ? "EN" : "HU"}
+            EN
+          </button>
+          <button
+            onClick={() => setLang("hu")}
+            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
+              lang === "hu" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            HU
           </button>
 
           {/* Mobile menu toggle */}
