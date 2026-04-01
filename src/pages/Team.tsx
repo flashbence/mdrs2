@@ -76,7 +76,7 @@ const Team = () => {
         </div>
 
         {/* Mobile: 2-col grid, no grayscale, visible text below */}
-        <div className="grid md:hidden grid-cols-2 gap-3 px-[1vw] py-4">
+        <div className="grid md:hidden grid-cols-2 gap-3 px-[2vw] py-4">
           {mobileTeam.map((member, i) => (
             <div key={i}>
               <div className="aspect-square bg-muted overflow-hidden">
