@@ -29,10 +29,6 @@ const translations: Record<Language, Record<string, string>> = {
     "team.placeholder.role": "Szerkezettervező mérnök",
     // Projects
     "projects.title": "Munkáink",
-    "projects.category.residential": "Lakóépület",
-    "projects.category.commercial": "Kereskedelmi",
-    "projects.category.industrial": "Ipari",
-    "projects.category.public": "Közintézmény",
     // Contact
     "contact.title": "Kapcsolat",
     "contact.glass.title": "Lépjen velünk kapcsolatba",
@@ -64,10 +60,6 @@ const translations: Record<Language, Record<string, string>> = {
     "team.placeholder.role": "Structural Engineer",
     // Projects
     "projects.title": "Our Projects",
-    "projects.category.residential": "Residential",
-    "projects.category.commercial": "Commercial",
-    "projects.category.industrial": "Industrial",
-    "projects.category.public": "Public",
     // Contact
     "contact.title": "Contact",
     "contact.glass.title": "Get in touch",
