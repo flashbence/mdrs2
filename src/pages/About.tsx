@@ -36,7 +36,7 @@ const About = () => {
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to bottom, rgba(181,195,211,0.35) 0%, rgba(181,195,211,0.15) 40%, rgba(255,255,255,0.1) 70%, white 100%)'
       }} />
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[8vw]">
         <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-tight text-black mb-8 text-center">
           {t("about.title")}
         </h1>
