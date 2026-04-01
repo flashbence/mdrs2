@@ -40,7 +40,7 @@ const Team = () => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(181,195,211,0.45) 0%, rgba(181,195,211,0.15) 30%, transparent 60%)",
+            "linear-gradient(to top, rgba(181,195,211,0.6) 0%, rgba(181,195,211,0.3) 35%, rgba(181,195,211,0.1) 65%, transparent 100%)",
         }}
       />
 
