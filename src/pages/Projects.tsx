@@ -147,21 +147,21 @@ const Projects = () => {
   const hasStatus = active !== "szakertes";
 
   return (
-    <div className="h-full relative flex flex-col items-center justify-center px-[8vw] bg-white font-body">
+    <div className="h-full sm:h-full relative flex flex-col items-center sm:justify-center px-[4vw] sm:px-[8vw] bg-white font-body overflow-y-auto sm:overflow-hidden">
       {/* Blue gradient from bottom */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)'
       }} />
 
-      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-[120px]" style={{ height: '75vh' }}>
+      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-[120px]" style={{ height: undefined }}>
         {/* Tabs */}
         <div className="flex flex-wrap gap-2 mb-0">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`px-6 py-2 rounded-[11px] text-[1.11em] font-normal font-['Work_Sans'] cursor-pointer transition-all duration-200
-                backdrop-blur-[18px] border
+              className={`px-[14px] py-[6px] sm:px-6 sm:py-2 rounded-[11px] text-[0.75rem] sm:text-[1.11em] font-normal font-['Work_Sans'] cursor-pointer transition-all duration-200
+                backdrop-blur-[18px] border whitespace-nowrap
                 ${active === cat
                   ? "bg-[#567395] text-white border-[#111] shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
                   : "bg-white/[0.12] text-foreground border-white/[0.18] shadow-[0_12px_32px_rgba(0,0,0,0.25)] hover:bg-[#567395] hover:text-white hover:border-[#111]"
@@ -173,14 +173,14 @@ const Projects = () => {
         </div>
 
         {/* Description */}
-        <div className="my-4 leading-relaxed text-[0.95em] font-normal text-foreground min-h-[2.5em]">
+        <div className="my-4 leading-[1.45] text-[0.89em] sm:text-[0.95em] font-normal text-foreground">
           {descriptions[lang][active]}
         </div>
 
-        {/* Table */}
-        <div className="w-full rounded-[14px] overflow-hidden flex-1 min-h-0" style={{ maxHeight: '500px', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
+        {/* Desktop Table */}
+        <div className="hidden sm:block w-full rounded-[14px] overflow-hidden flex-1 min-h-0" style={{ maxHeight: '500px', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
           <table className="w-full text-left text-[clamp(13px,1.08vw,15px)]">
-            <thead className="sticky top-0">
+            <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
                 <th className="px-3 py-2.5 font-medium text-black text-[0.89rem] tracking-[0.05em] whitespace-nowrap">{headers[0]}</th>
                 <th className="px-3 py-2.5 font-medium text-black text-[0.89rem] tracking-[0.05em] whitespace-nowrap">{headers[1]}</th>
@@ -204,6 +204,27 @@ const Projects = () => {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card Layout */}
+        <div className="sm:hidden flex flex-col gap-[10px] pb-6">
+          {currentProjects.map((p, i) => (
+            <div
+              key={i}
+              className="grid gap-x-3 gap-y-2 p-3 bg-white/10 border border-white/[0.14] rounded-[14px] relative text-[0.86rem] text-black"
+              style={{ gridTemplateColumns: hasStatus ? '0.7fr 1.3fr' : '1fr' }}
+            >
+              {/* Row 1: Project name - full width */}
+              <div className="col-span-full font-semibold">{p.name}</div>
+              {/* Row 2: Description - full width */}
+              <div className="col-span-full opacity-95">{p.description[lang]}</div>
+              {/* Row 3: Year (left) + Status (right) */}
+              <div className="text-[0.82rem] opacity-90">{p.year}</div>
+              {hasStatus && p.status && (
+                <div className="text-[0.82rem] opacity-90 text-right">{p.status[lang]}</div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>
