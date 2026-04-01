@@ -1,24 +1,25 @@
 
 
-## Egységes hover szövegméretek a Team oldalon
+## Kezdőoldal kép javítása
 
 ### Probléma
-A Team oldal hover szövegei kisebbek, mint az oldalon máshol használt méretek:
-- **Név most**: `clamp(13px, 1.1vw, 20px)`
-- **Beosztás most**: `clamp(10px, 0.8vw, 15px)`
+- A kép `object-cover`-rel jelenik meg → levágja az oldalát/alját
+- `overflow-hidden` + `flex-1` → a kép kitölti a maradék helyet, de levágódik
+- Nincs gap a CTA gomb és a kép között
 
-### Referencia méretek más oldalakon
-- **Body szöveg** (About, Contact): `clamp(14px, 1.08vw, 16px)`
-- **Alcím** (Contact subtitle): `clamp(15px, 1.19vw, 18px)`
+### Megoldás
+- A képet `object-contain`-re cseréljük, így soha nem vágódik le
+- A kép wrapper-ről levesszük az `overflow-hidden`-t és a `flex-1`-et
+- Helyette a kép kap egy `max-h`-t ami a rendelkezésre álló helyet tölti ki: `flex-1 min-h-0` a wrapper-en, a kép pedig `max-h-full max-w-full object-contain`
+- CTA gomb alá `mb-6` (gap a kép felé)
 
-### Javítás
-A Team hover szövegeket a site-szerte használt body méretekhez igazítom:
+### Konkrét változások — `src/pages/Index.tsx`
 
 | Elem | Jelenlegi | Új |
 |------|-----------|-----|
-| Név | `clamp(13px, 1.1vw, 20px)` | `clamp(15px, 1.19vw, 18px)` |
-| Beosztás | `clamp(10px, 0.8vw, 15px)` | `clamp(14px, 1.08vw, 16px)` |
+| Text div | `mb-0` | `mb-6` |
+| Image wrapper | `flex-1 overflow-hidden` | `flex-1 min-h-0` (overflow nélkül) |
+| img | `w-full max-w-[1100px] object-cover object-bottom` | `max-h-full max-w-full max-w-[1100px] object-contain object-bottom` |
 
-### Érintett fájl
-- `src/pages/Team.tsx` — 2 sor módosítás a hover overlay-ben
+Így a kép mindig teljesen látszik (alja + oldalai), és ha kevés a hely, arányosan kisebb lesz.
 
