@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (max-width: 767px) {
+  html { font-size: 117%; }
+}
+
 @layer base {
   :root {
     --background: 210 14% 98%;       /* #FAFAFA */

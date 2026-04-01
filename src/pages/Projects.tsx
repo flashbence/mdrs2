@@ -181,7 +181,7 @@ const Projects = () => {
         {/* Desktop Table */}
         <div className="hidden sm:block w-full rounded-[14px] overflow-hidden">
           <div className="max-h-[500px] overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
-          <table className="w-full text-left text-[clamp(13px,1.08vw,15px)]">
+          <table className="w-full text-left <table className="w-full text-left text-[clamp(0.8125rem,1.08vw,15px)]">">
             <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
                 <th className="px-3 py-2.5 font-medium text-black text-[0.89rem] tracking-[0.05em] whitespace-nowrap">{headers[0]}</th>
