@@ -47,16 +47,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {/* Language switcher - two separate buttons */}
           <button
             onClick={() => setLang("en")}
-            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
-              lang === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            className={`text-xs font-light tracking-wide px-2 py-1 rounded transition-colors ${
+              lang === "en" ? "text-foreground bg-[#DCDCDC]" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             EN
           </button>
           <button
             onClick={() => setLang("hu")}
-            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
-              lang === "hu" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            className={`text-xs font-light tracking-wide px-2 py-1 rounded transition-colors ${
+              lang === "hu" ? "text-foreground bg-[#DCDCDC]" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             HU
