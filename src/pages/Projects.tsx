@@ -206,6 +206,7 @@ const Projects = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
         {/* Mobile Card Layout */}
