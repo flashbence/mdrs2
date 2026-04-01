@@ -161,7 +161,7 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`px-[14px] py-[6px] sm:px-6 sm:py-2 rounded-[11px] text-[0.75rem] sm:text-[1.11em] font-normal font-['Work_Sans'] cursor-pointer transition-all duration-200
+              className={`px-[14px] py-[6px] sm:px-6 sm:py-2 rounded-[11px] text-[0.75rem] sm:text-[1.1rem] font-light font-['Work_Sans'] tracking-wide cursor-pointer transition-all duration-200
                 backdrop-blur-[18px] border whitespace-nowrap
                 ${active === cat
                   ? "bg-[#567395] text-white border-[#111] shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
