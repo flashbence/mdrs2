@@ -55,7 +55,7 @@ const About = () => {
               key={i}
               src={img}
               alt={`Project ${(i % projectImages.length) + 1}`}
-              className="h-[350px] w-auto object-contain flex-none"
+              className="h-[clamp(180px,18vw,280px)] w-auto object-contain flex-none"
               loading="eager"
             />
           ))}
