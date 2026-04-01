@@ -50,6 +50,7 @@
 @layer base {
   * {
     @apply border-border;
+    letter-spacing: -0.05em;
   }
 
   body {
