@@ -68,7 +68,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           className="md:hidden text-foreground z-50"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={28} strokeWidth={1.2} /> : <Menu size={28} strokeWidth={1.2} />}
         </button>
       </header>
 
