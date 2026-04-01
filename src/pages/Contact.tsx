@@ -21,7 +21,7 @@ const Contact = () => {
               <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-normal font-['Work_Sans'] text-foreground">
                 {t("contact.glass.title")}
               </h1>
-              <p className="text-[clamp(14px,1.1vw,17px)] font-normal text-muted-foreground">
+              <p className="text-[clamp(15px,1.19vw,18px)] font-light text-muted-foreground">
                 {t("contact.glass.subtitle")}
               </p>
             </div>
