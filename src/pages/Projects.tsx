@@ -153,7 +153,7 @@ const Projects = () => {
         background: 'linear-gradient(to top, rgba(181,195,211,0.45) 0%, rgba(181,195,211,0.15) 35%, transparent 65%)'
       }} />
 
-      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch" style={{ maxHeight: '75vh' }}>
+      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch" style={{ height: '75vh' }}>
         {/* Tabs */}
         <div className="flex flex-wrap gap-2 mb-0">
           {categories.map((cat) => (
