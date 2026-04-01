@@ -1,20 +1,28 @@
 
 
-## Szövegszélesség egyeztetés – About vs Projects
+## Hero épületkép tetejének levágása — Index oldal
 
-### Jelenlegi állapot
+### Mi a probléma
+A kezdőoldalon a `hero-building.png` kép teteje kilóg / nem kívánt részt mutat. Le kell vágni a kép felső részét.
 
-- **Projects oldal**: `px-8 md:px-16 lg:px-24` padding + `max-w-[1400px]` belső konténer
-- **About oldal**: `px-[clamp(40px,6.5vw,120px)]` padding, nincs max-width korlátozás
+### Megoldás
 
-Ezek eltérő szélességet adnak — az About oldal más padding-logikát követ.
+**Index.tsx** — az img wrapper div-en `overflow-hidden` már van (a szülőn), az img-et felfelé toljuk és a tetejét levágjuk:
 
-### Terv
+- Az `<img>` elemet becsomagoljuk egy `overflow-hidden` div-be
+- `object-cover` + `object-bottom` kombináció: a kép alját tartja meg, a tetejét vágja le
+- Opcionálisan `clip-path: inset(15% 0 0 0)` vagy negatív `margin-top` a kép tetejének eltüntetéséhez
 
-**About.tsx** — a külső konténer paddingját és a belső wrapper-t a Projects oldalhoz igazítjuk:
+Konkrétan:
+```jsx
+<div className="flex justify-center px-[5vw] w-full min-h-0 flex-1 overflow-hidden">
+  <img
+    src={heroBuilding}
+    alt="Structural engineering 3D model"
+    className="w-full max-w-[1100px] object-cover object-bottom"
+  />
+</div>
+```
 
-1. Külső div padding: `px-[clamp(40px,6.5vw,120px)]` → `px-8 md:px-16 lg:px-24`
-2. Belső `w-full` div-hez hozzáadni: `max-w-[1400px] mx-auto` (mint a Projects-ben)
-
-Így a szöveg és a táblázat pontosan ugyanolyan széles lesz mindkét oldalon.
+Az `object-contain` → `object-cover` + `object-bottom` váltás biztosítja, hogy a kép alja látszik, a teteje pedig levágódik a konténer határánál.
 
