@@ -85,7 +85,7 @@ const Contact = () => {
             <div className="flex-1 rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(14px,1.8vw,24px)] flex flex-col justify-center">
               <div className="flex items-center justify-between gap-[clamp(10px,1.3vw,15px)] mb-[clamp(12px,1.3vw,20px)]">
                 <h2 className="text-[clamp(19px,1.84vw,28px)] font-light font-['Work_Sans'] text-foreground">
-                  Madaras Botond
+                  {t("team.name.botond")}
                 </h2>
                 <div className="w-[clamp(44px,4.5vw,60px)] h-[clamp(44px,4.5vw,60px)] rounded-full overflow-hidden border border-white/[0.22] bg-white/[0.12] shadow-[0_10px_22px_rgba(0,0,0,0.14)] flex-shrink-0">
                   <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-base font-light">
