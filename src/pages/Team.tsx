@@ -10,25 +10,25 @@ import benceImg from "@/assets/team/gulacsy-bence.jpeg";
 import erzsebetImg from "@/assets/team/tamas-erzsebet.jpeg";
 
 const desktopTeam = [
-  { row: 0, col: 0, img: botondImg, name: "Madaras Botond", roleKey: "team.role.botond" },
-  { row: 0, col: 1, img: koppanyImg, name: "Madaras Koppány", roleKey: "team.role.koppany" },
-  { row: 0, col: 3, img: rekaImg, name: "Dobnerné Éliás Réka", roleKey: "team.role.reka" },
-  { row: 0, col: 4, img: milanImg, name: "Kerecsanin Milán", roleKey: "team.role.milan" },
-  { row: 1, col: 0, img: ozzieImg, name: "Ozzie", roleKey: "team.role.ozzie" },
-  { row: 1, col: 2, img: peterImg, name: "Kincses Péter", roleKey: "team.role.peter" },
-  { row: 1, col: 3, img: benceImg, name: "Gulácsy Bence", roleKey: "team.role.bence" },
-  { row: 1, col: 4, img: erzsebetImg, name: "Bálintné Tamás Erzsébet", roleKey: "team.role.erzsebet" },
+  { row: 0, col: 0, img: botondImg, nameKey: "team.name.botond", roleKey: "team.role.botond" },
+  { row: 0, col: 1, img: koppanyImg, nameKey: "team.name.koppany", roleKey: "team.role.koppany" },
+  { row: 0, col: 3, img: rekaImg, nameKey: "team.name.reka", roleKey: "team.role.reka" },
+  { row: 0, col: 4, img: milanImg, nameKey: "team.name.milan", roleKey: "team.role.milan" },
+  { row: 1, col: 0, img: ozzieImg, nameKey: "team.name.ozzie", roleKey: "team.role.ozzie" },
+  { row: 1, col: 2, img: peterImg, nameKey: "team.name.peter", roleKey: "team.role.peter" },
+  { row: 1, col: 3, img: benceImg, nameKey: "team.name.bence", roleKey: "team.role.bence" },
+  { row: 1, col: 4, img: erzsebetImg, nameKey: "team.name.erzsebet", roleKey: "team.role.erzsebet" },
 ];
 
 const mobileTeam = [
-  { img: botondImg, name: "Madaras Botond", roleKey: "team.role.botond" },
-  { img: koppanyImg, name: "Madaras Koppány", roleKey: "team.role.koppany" },
-  { img: rekaImg, name: "Dobnerné Éliás Réka", roleKey: "team.role.reka" },
-  { img: milanImg, name: "Kerecsanin Milán", roleKey: "team.role.milan" },
-  { img: peterImg, name: "Kincses Péter", roleKey: "team.role.peter" },
-  { img: benceImg, name: "Gulácsy Bence", roleKey: "team.role.bence" },
-  { img: erzsebetImg, name: "Bálintné Tamás Erzsébet", roleKey: "team.role.erzsebet" },
-  { img: ozzieImg, name: "Ozzie", roleKey: "team.role.ozzie" },
+  { img: botondImg, nameKey: "team.name.botond", roleKey: "team.role.botond" },
+  { img: koppanyImg, nameKey: "team.name.koppany", roleKey: "team.role.koppany" },
+  { img: rekaImg, nameKey: "team.name.reka", roleKey: "team.role.reka" },
+  { img: milanImg, nameKey: "team.name.milan", roleKey: "team.role.milan" },
+  { img: peterImg, nameKey: "team.name.peter", roleKey: "team.role.peter" },
+  { img: benceImg, nameKey: "team.name.bence", roleKey: "team.role.bence" },
+  { img: erzsebetImg, nameKey: "team.name.erzsebet", roleKey: "team.role.erzsebet" },
+  { img: ozzieImg, nameKey: "team.name.ozzie", roleKey: "team.role.ozzie" },
 ];
 
 const Team = () => {
