@@ -19,7 +19,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className="min-h-screen md:h-screen flex flex-col overflow-visible md:overflow-hidden">
+    <div className="min-h-screen md:h-screen flex flex-col overflow-visible md:overflow-hidden md:overscroll-none">
       {/* Header */}
       <header className="absolute top-0 left-0 right-0 flex items-center justify-between px-[4vw] pb-[0.9vw] pt-0 bg-transparent z-50">
         <Link to="/" className="flex items-center">
