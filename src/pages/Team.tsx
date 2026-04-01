@@ -10,25 +10,25 @@ import benceImg from "@/assets/team/gulacsy-bence.jpeg";
 import erzsebetImg from "@/assets/team/tamas-erzsebet.jpeg";
 
 const desktopTeam = [
-  { row: 0, col: 0, img: botondImg, name: "Madaras Botond", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1)" },
-  { row: 0, col: 1, img: koppanyImg, name: "Madaras Koppány", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1, VZ-TER, VZ-TEL)" },
-  { row: 0, col: 3, img: rekaImg, name: "Dobnerné Éliás Réka", role: "szerkezettervező mérnök (T)" },
-  { row: 0, col: 4, img: milanImg, name: "Kerecsanin Milán", role: "szerkezettervező mérnök" },
-  { row: 1, col: 0, img: ozzieImg, name: "Ozzie", role: "általános irodai segéderő" },
-  { row: 1, col: 2, img: peterImg, name: "Kincses Péter", role: "szerkezettervező mérnök" },
-  { row: 1, col: 3, img: benceImg, name: "Gulácsy Bence", role: "szerkezettervező mérnök" },
-  { row: 1, col: 4, img: erzsebetImg, name: "Bálintné Tamás Erzsébet", role: "szerkezettervező mérnök" },
+  { row: 0, col: 0, img: botondImg, name: "Madaras Botond", roleKey: "team.role.botond" },
+  { row: 0, col: 1, img: koppanyImg, name: "Madaras Koppány", roleKey: "team.role.koppany" },
+  { row: 0, col: 3, img: rekaImg, name: "Dobnerné Éliás Réka", roleKey: "team.role.reka" },
+  { row: 0, col: 4, img: milanImg, name: "Kerecsanin Milán", roleKey: "team.role.milan" },
+  { row: 1, col: 0, img: ozzieImg, name: "Ozzie", roleKey: "team.role.ozzie" },
+  { row: 1, col: 2, img: peterImg, name: "Kincses Péter", roleKey: "team.role.peter" },
+  { row: 1, col: 3, img: benceImg, name: "Gulácsy Bence", roleKey: "team.role.bence" },
+  { row: 1, col: 4, img: erzsebetImg, name: "Bálintné Tamás Erzsébet", roleKey: "team.role.erzsebet" },
 ];
 
 const mobileTeam = [
-  { img: botondImg, name: "Madaras Botond", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1)" },
-  { img: koppanyImg, name: "Madaras Koppány", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1, VZ-TER, VZ-TEL)" },
-  { img: rekaImg, name: "Dobnerné Éliás Réka", role: "szerkezettervező mérnök (T)" },
-  { img: milanImg, name: "Kerecsanin Milán", role: "szerkezettervező mérnök" },
-  { img: peterImg, name: "Kincses Péter", role: "szerkezettervező mérnök" },
-  { img: benceImg, name: "Gulácsy Bence", role: "szerkezettervező mérnök" },
-  { img: erzsebetImg, name: "Bálintné Tamás Erzsébet", role: "szerkezettervező mérnök" },
-  { img: ozzieImg, name: "Ozzie", role: "általános irodai segéderő" },
+  { img: botondImg, name: "Madaras Botond", roleKey: "team.role.botond" },
+  { img: koppanyImg, name: "Madaras Koppány", roleKey: "team.role.koppany" },
+  { img: rekaImg, name: "Dobnerné Éliás Réka", roleKey: "team.role.reka" },
+  { img: milanImg, name: "Kerecsanin Milán", roleKey: "team.role.milan" },
+  { img: peterImg, name: "Kincses Péter", roleKey: "team.role.peter" },
+  { img: benceImg, name: "Gulácsy Bence", roleKey: "team.role.bence" },
+  { img: erzsebetImg, name: "Bálintné Tamás Erzsébet", roleKey: "team.role.erzsebet" },
+  { img: ozzieImg, name: "Ozzie", roleKey: "team.role.ozzie" },
 ];
 
 const Team = () => {
@@ -67,7 +67,7 @@ const Team = () => {
                     {member.name}
                   </span>
                   <span className="text-white/80 font-body font-light text-[clamp(10px,0.8vw,15px)] leading-tight mt-[2px]">
-                    {member.role}
+                    {t(member.roleKey)}
                   </span>
                 </div>
               </div>
@@ -91,7 +91,7 @@ const Team = () => {
                   {member.name}
                 </p>
                 <p className="font-body font-light text-sm leading-tight text-muted-foreground mt-0.5">
-                  {member.role}
+                  {t(member.roleKey)}
                 </p>
               </div>
             </div>

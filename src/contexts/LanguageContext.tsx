@@ -27,6 +27,14 @@ const translations: Record<Language, Record<string, string>> = {
     // Team
     "team.title": "Munkatársaink",
     "team.placeholder.role": "Szerkezettervező mérnök",
+    "team.role.botond": "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1)",
+    "team.role.koppany": "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1, VZ-TER, VZ-TEL)",
+    "team.role.reka": "szerkezettervező mérnök (T)",
+    "team.role.milan": "szerkezettervező mérnök",
+    "team.role.ozzie": "általános irodai segéderő",
+    "team.role.peter": "szerkezettervező mérnök",
+    "team.role.bence": "szerkezettervező mérnök",
+    "team.role.erzsebet": "szerkezettervező mérnök",
     // Projects
     "projects.title": "Munkáink",
     // Contact
@@ -58,6 +66,14 @@ const translations: Record<Language, Record<string, string>> = {
     // Team
     "team.title": "Our Team",
     "team.placeholder.role": "Structural Engineer",
+    "team.role.botond": "structural engineer, co-owner, managing director (T, SZÉS-1)",
+    "team.role.koppany": "structural engineer, co-owner, managing director (T, SZÉS-1, VZ-TER, VZ-TEL)",
+    "team.role.reka": "structural engineer (T)",
+    "team.role.milan": "structural engineer",
+    "team.role.ozzie": "general office assistant",
+    "team.role.peter": "structural engineer",
+    "team.role.bence": "structural engineer",
+    "team.role.erzsebet": "structural engineer",
     // Projects
     "projects.title": "Our Projects",
     // Contact
