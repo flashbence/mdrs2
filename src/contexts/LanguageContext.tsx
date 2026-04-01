@@ -29,10 +29,6 @@ const translations: Record<Language, Record<string, string>> = {
     "team.placeholder.role": "Szerkezettervező mérnök",
     // Projects
     "projects.title": "Munkáink",
-    "projects.category.residential": "Lakóépület",
-    "projects.category.commercial": "Kereskedelmi",
-    "projects.category.industrial": "Ipari",
-    "projects.category.public": "Közintézmény",
     // Contact
     "contact.title": "Kapcsolat",
     "contact.glass.title": "Lépjen velünk kapcsolatba",
