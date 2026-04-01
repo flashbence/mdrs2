@@ -49,15 +49,19 @@ const About = () => {
 
       {/* Infinite scrolling image marquee - full width */}
       <div className="relative z-10 w-full mt-12 overflow-hidden">
-        <div className="flex w-max will-change-transform animate-marquee gap-6">
-          {[...projectImages, ...projectImages].map((img, i) => (
-            <img
-              key={i}
-              src={img}
-              alt={`Project ${(i % projectImages.length) + 1}`}
-              className="h-[clamp(180px,18vw,280px)] w-auto object-contain flex-none"
-              loading="eager"
-            />
+        <div className="flex w-max animate-marquee will-change-transform">
+          {[0, 1].map((group) => (
+            <div key={group} className="flex min-w-max shrink-0 gap-6 pr-6">
+              {projectImages.map((img, i) => (
+                <img
+                  key={`${group}-${i}`}
+                  src={img}
+                  alt={`Project ${i + 1}`}
+                  className="h-[clamp(180px,18vw,280px)] w-auto object-contain shrink-0 flex-none"
+                  loading="eager"
+                />
+              ))}
+            </div>
           ))}
         </div>
       </div>
