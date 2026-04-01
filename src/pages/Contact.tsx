@@ -12,7 +12,7 @@ const Contact = () => {
       }} />
 
       {/* Outer glass card - centered, slightly smaller */}
-      <div className="relative z-10 w-full max-w-[1100px] rounded-[32px] bg-[rgba(86,115,149,0.12)] backdrop-blur-[18px] border border-white/[0.18] shadow-[0_12px_32px_rgba(0,0,0,0.15)] p-[clamp(16px,1.8vw,32px)] box-border">
+      <div className="pointer-events-auto relative z-10 w-full max-w-[1100px] rounded-[32px] bg-[rgba(86,115,149,0.12)] backdrop-blur-[18px] border border-white/[0.18] shadow-[0_12px_32px_rgba(0,0,0,0.15)] p-[clamp(16px,1.8vw,32px)] box-border">
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-[clamp(12px,1.5vw,16px)] items-stretch">
           {/* Left - Company info */}
           <div className="rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(14px,1.8vw,24px)]">
