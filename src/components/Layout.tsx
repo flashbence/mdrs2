@@ -48,7 +48,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <button
             onClick={() => setLang("en")}
             className={`text-xs font-light tracking-wide px-2 py-1 rounded transition-colors ${
-              lang === "en" ? "text-foreground bg-[#DCDCDC]" : "text-muted-foreground hover:text-foreground"
+              lang === "en" ? "text-foreground bg-[#FAFAFA]" : "text-muted-foreground hover:text-foreground"
             }`}
           >
             EN
