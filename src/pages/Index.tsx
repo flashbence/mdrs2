@@ -12,7 +12,7 @@ const Index = () => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(181,195,211,0.7) 0%, rgba(181,195,211,0.35) 35%, rgba(220,230,240,0.1) 60%, transparent 80%)",
+            "linear-gradient(to top, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)",
         }}
       />
 
@@ -20,10 +20,10 @@ const Index = () => {
       <div className="relative z-10 flex h-full flex-col items-center justify-end pb-0">
         {/* Text content */}
         <div className="px-6 text-center mb-4">
-          <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading">
+          <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading whitespace-nowrap">
             {t("home.title")}
           </h1>
-          <p className="text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-xl mx-auto font-body">
+          <p className="text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-4xl mx-auto font-body whitespace-nowrap">
             {t("home.subtitle")}
           </p>
           <Link
