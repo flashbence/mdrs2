@@ -62,7 +62,7 @@ const Team = () => {
                   alt={member.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-[clamp(8px,1vw,16px)]">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-[clamp(8px,1vw,16px)] pt-[clamp(40px,4vw,70px)]">
                   <span className="text-white font-heading font-light text-[clamp(13px,1.1vw,20px)] leading-tight">
                     {member.name}
                   </span>
