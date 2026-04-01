@@ -19,11 +19,11 @@ const Index = () => {
       {/* Layout: text + image, pushed towards center-bottom */}
       <div className="relative z-10 flex h-full flex-col items-center justify-end pb-0 pt-[120px]">
         {/* Text content */}
-        <div className="px-8 md:px-16 lg:px-24 text-center mb-6 shrink-0">
-          <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading whitespace-nowrap">
+        <div className="px-4 sm:px-8 md:px-16 lg:px-24 text-center mb-6 shrink-0 min-w-0 w-full">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading sm:whitespace-nowrap break-words">
             {t("home.title")}
           </h1>
-          <p className="text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-4xl mx-auto font-body whitespace-nowrap">
+          <p className="text-xs sm:text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-4xl mx-auto font-body break-words">
             {t("home.subtitle")}
           </p>
           <Link
