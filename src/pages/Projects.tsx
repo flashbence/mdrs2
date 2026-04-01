@@ -147,13 +147,14 @@ const Projects = () => {
   const hasStatus = active !== "szakertes";
 
   return (
-    <div className="h-full sm:h-full relative flex flex-col items-center sm:justify-center px-[4vw] sm:px-[8vw] bg-white font-body overflow-y-auto sm:overflow-hidden">
-      {/* Blue gradient from bottom */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'linear-gradient(to top, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)'
-      }} />
+    <div
+      className="min-h-full sm:h-full relative flex flex-col items-center sm:justify-center px-[4vw] sm:px-[8vw] font-body overflow-y-auto sm:overflow-hidden"
+      style={{
+        background: 'linear-gradient(to top, rgba(181,195,211,0.5) 0%, rgba(181,195,211,0.25) 30%, rgba(181,195,211,0.1) 55%, white 75%)'
+      }}
+    >
 
-      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-[120px]" style={{ height: undefined }}>
+      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-[calc(0.9vw+45px)] sm:pt-[120px] pb-6 sm:pb-0" style={{ height: undefined }}>
         {/* Tabs */}
         <div className="flex flex-wrap gap-2 mb-0">
           {categories.map((cat) => (
