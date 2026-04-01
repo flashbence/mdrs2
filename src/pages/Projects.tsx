@@ -154,7 +154,7 @@ const Projects = () => {
       }}
     >
 
-      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-[calc(0.9vw+45px)] sm:pt-[120px] pb-6 sm:pb-0" style={{ height: undefined }}>
+      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-20 sm:pt-[120px] pb-6 sm:pb-0" style={{ height: undefined }}>
         {/* Tabs */}
         <div className="flex flex-wrap gap-2 mb-0">
           {categories.map((cat) => (

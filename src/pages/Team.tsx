@@ -35,7 +35,7 @@ const Team = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen md:h-full flex flex-col items-center justify-center relative">
+    <div className="min-h-screen md:h-full flex flex-col items-center justify-center relative pt-20 md:pt-0">
       <div
         className="pointer-events-none absolute inset-0"
         style={{
