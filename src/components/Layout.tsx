@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Menu, X } from "lucide-react";
+import logoImg from "@/assets/mdrs2-logo.png";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { lang, setLang, t } = useLanguage();
