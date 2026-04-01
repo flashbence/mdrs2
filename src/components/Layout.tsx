@@ -21,9 +21,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="h-screen flex flex-col overflow-hidden">
       {/* Header */}
       <header className="flex items-center justify-between px-6 md:px-12 py-4 bg-card/80 backdrop-blur-sm border-b z-50 relative">
-        <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight font-['Space_Grotesk']">
-          <span className="text-primary">MDRS</span>
-          <span className="text-primary/70">2</span>
+        <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight font-['Work_Sans']">
+          <span className="text-foreground">MDRS</span>
+          <span className="text-foreground/70">2</span>
         </Link>
 
         {/* Desktop nav */}
@@ -43,13 +43,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
-          {/* Language switcher */}
+        <div className="flex items-center gap-1">
+          {/* Language switcher - two separate buttons */}
           <button
-            onClick={() => setLang(lang === "hu" ? "en" : "hu")}
-            className="text-xs font-semibold tracking-widest border border-border rounded px-3 py-1.5 hover:bg-secondary transition-colors uppercase"
+            onClick={() => setLang("en")}
+            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
+              lang === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
           >
-            {lang === "hu" ? "EN" : "HU"}
+            EN
+          </button>
+          <button
+            onClick={() => setLang("hu")}
+            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
+              lang === "hu" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            HU
           </button>
 
           {/* Mobile menu toggle */}
