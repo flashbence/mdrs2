@@ -77,3 +77,17 @@
     font-size: 1.5rem;
   }
 }
+
+/* Contact page: reset to pill-specific sizes */
+.contact-page h1,
+.contact-page h2,
+.contact-page h3 {
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+.contact-page p,
+.contact-page a,
+.contact-page div {
+  font-size: inherit;
+}
