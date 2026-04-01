@@ -10,10 +10,21 @@ import pasaret01 from "@/assets/projects/pasaret-01.jpg";
 import ecseri02 from "@/assets/projects/ecseri-02.jpg";
 import menesi02 from "@/assets/projects/menesi-02.jpg";
 import gizella02 from "@/assets/projects/gizella-02.jpg";
+import rg01 from "@/assets/projects/rg-01.jpg";
+import hermanOtto01 from "@/assets/projects/herman-otto-01.jpg";
+import ecseri01 from "@/assets/projects/ecseri-01.jpg";
+import arnyas01 from "@/assets/projects/arnyas-01.jpg";
+import almassyTer02 from "@/assets/projects/almassy-ter-02.jpg";
+import papa01 from "@/assets/projects/papa-01.jpg";
+import kiraly01 from "@/assets/projects/kiraly-01.jpg";
+import mem02 from "@/assets/projects/mem-02.jpg";
+import almassyTer01 from "@/assets/projects/almassy-ter-01.jpg";
 
 const projectImages = [
   molDufi01, mem01, lake01, molDufi02, nagymaros01,
   kispestiOvi01, pasaret01, ecseri02, menesi02, gizella02,
+  rg01, hermanOtto01, ecseri01, arnyas01, almassyTer02,
+  papa01, kiraly01, mem02, almassyTer01,
 ];
 
 const About = () => {
