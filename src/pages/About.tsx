@@ -34,7 +34,7 @@ const About = () => {
     <div className="relative h-full flex flex-col items-center justify-center">
       {/* Blue gradient from top */}
       <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'linear-gradient(to bottom, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)'
+        background: 'linear-gradient(to bottom, rgba(181,195,211,0.35) 0%, rgba(181,195,211,0.15) 40%, rgba(255,255,255,0.1) 70%, white 100%)'
       }} />
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24">
         <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-tight text-black mb-8 text-center">
