@@ -10,25 +10,25 @@ import benceImg from "@/assets/team/gulacsy-bence.jpeg";
 import erzsebetImg from "@/assets/team/tamas-erzsebet.jpeg";
 
 const desktopTeam = [
-  { row: 0, col: 0, img: botondImg, name: "Madaras Botond", roleKey: "team.role.botond" },
-  { row: 0, col: 1, img: koppanyImg, name: "Madaras Koppány", roleKey: "team.role.koppany" },
-  { row: 0, col: 3, img: rekaImg, name: "Dobnerné Éliás Réka", roleKey: "team.role.reka" },
-  { row: 0, col: 4, img: milanImg, name: "Kerecsanin Milán", roleKey: "team.role.milan" },
-  { row: 1, col: 0, img: ozzieImg, name: "Ozzie", roleKey: "team.role.ozzie" },
-  { row: 1, col: 2, img: peterImg, name: "Kincses Péter", roleKey: "team.role.peter" },
-  { row: 1, col: 3, img: benceImg, name: "Gulácsy Bence", roleKey: "team.role.bence" },
-  { row: 1, col: 4, img: erzsebetImg, name: "Bálintné Tamás Erzsébet", roleKey: "team.role.erzsebet" },
+  { row: 0, col: 0, img: botondImg, nameKey: "team.name.botond", roleKey: "team.role.botond" },
+  { row: 0, col: 1, img: koppanyImg, nameKey: "team.name.koppany", roleKey: "team.role.koppany" },
+  { row: 0, col: 3, img: rekaImg, nameKey: "team.name.reka", roleKey: "team.role.reka" },
+  { row: 0, col: 4, img: milanImg, nameKey: "team.name.milan", roleKey: "team.role.milan" },
+  { row: 1, col: 0, img: ozzieImg, nameKey: "team.name.ozzie", roleKey: "team.role.ozzie" },
+  { row: 1, col: 2, img: peterImg, nameKey: "team.name.peter", roleKey: "team.role.peter" },
+  { row: 1, col: 3, img: benceImg, nameKey: "team.name.bence", roleKey: "team.role.bence" },
+  { row: 1, col: 4, img: erzsebetImg, nameKey: "team.name.erzsebet", roleKey: "team.role.erzsebet" },
 ];
 
 const mobileTeam = [
-  { img: botondImg, name: "Madaras Botond", roleKey: "team.role.botond" },
-  { img: koppanyImg, name: "Madaras Koppány", roleKey: "team.role.koppany" },
-  { img: rekaImg, name: "Dobnerné Éliás Réka", roleKey: "team.role.reka" },
-  { img: milanImg, name: "Kerecsanin Milán", roleKey: "team.role.milan" },
-  { img: peterImg, name: "Kincses Péter", roleKey: "team.role.peter" },
-  { img: benceImg, name: "Gulácsy Bence", roleKey: "team.role.bence" },
-  { img: erzsebetImg, name: "Bálintné Tamás Erzsébet", roleKey: "team.role.erzsebet" },
-  { img: ozzieImg, name: "Ozzie", roleKey: "team.role.ozzie" },
+  { img: botondImg, nameKey: "team.name.botond", roleKey: "team.role.botond" },
+  { img: koppanyImg, nameKey: "team.name.koppany", roleKey: "team.role.koppany" },
+  { img: rekaImg, nameKey: "team.name.reka", roleKey: "team.role.reka" },
+  { img: milanImg, nameKey: "team.name.milan", roleKey: "team.role.milan" },
+  { img: peterImg, nameKey: "team.name.peter", roleKey: "team.role.peter" },
+  { img: benceImg, nameKey: "team.name.bence", roleKey: "team.role.bence" },
+  { img: erzsebetImg, nameKey: "team.name.erzsebet", roleKey: "team.role.erzsebet" },
+  { img: ozzieImg, nameKey: "team.name.ozzie", roleKey: "team.role.ozzie" },
 ];
 
 const Team = () => {
@@ -59,12 +59,12 @@ const Team = () => {
               <div className="aspect-square bg-muted overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 relative">
                 <img
                   src={member.img}
-                  alt={member.name}
+                  alt={t(member.nameKey)}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-[clamp(8px,1vw,16px)] pt-[clamp(40px,4vw,70px)]">
                   <span className="text-white font-heading font-light text-[clamp(13px,1.1vw,20px)] leading-tight">
-                    {member.name}
+                    {t(member.nameKey)}
                   </span>
                   <span className="text-white/80 font-body font-light text-[clamp(10px,0.8vw,15px)] leading-tight mt-[2px]">
                     {t(member.roleKey)}
@@ -82,13 +82,13 @@ const Team = () => {
               <div className="aspect-square bg-muted overflow-hidden">
                 <img
                   src={member.img}
-                  alt={member.name}
+                  alt={t(member.nameKey)}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="mt-1.5">
                 <p className="font-heading font-light text-base leading-tight text-foreground">
-                  {member.name}
+                  {t(member.nameKey)}
                 </p>
                 <p className="font-body font-light text-sm leading-tight text-muted-foreground mt-0.5">
                   {t(member.roleKey)}
