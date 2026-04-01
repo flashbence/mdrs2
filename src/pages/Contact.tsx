@@ -1,5 +1,7 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Building2, FileText, Facebook } from "lucide-react";
+import botondImg from "@/assets/team/madaras-botond.jpeg";
+import koppanyImg from "@/assets/team/madaras-koppany.jpeg";
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -88,9 +90,7 @@ const Contact = () => {
                   {t("team.name.botond")}
                 </h2>
                 <div className="w-[clamp(44px,4.5vw,60px)] h-[clamp(44px,4.5vw,60px)] rounded-full overflow-hidden border border-white/[0.22] bg-white/[0.12] shadow-[0_10px_22px_rgba(0,0,0,0.14)] flex-shrink-0">
-                  <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-base font-light">
-                    MB
-                  </div>
+                  <img src={botondImg} alt={t("team.name.botond")} className="w-full h-full object-cover grayscale" />
                 </div>
               </div>
               <div className="space-y-0.5 text-[clamp(14px,1.08vw,16px)] font-light text-foreground">
@@ -110,9 +110,7 @@ const Contact = () => {
                   {t("team.name.koppany")}
                 </h2>
                 <div className="w-[clamp(44px,4.5vw,60px)] h-[clamp(44px,4.5vw,60px)] rounded-full overflow-hidden border border-white/[0.22] bg-white/[0.12] shadow-[0_10px_22px_rgba(0,0,0,0.14)] flex-shrink-0">
-                  <div className="w-full h-full bg-muted flex items-center justify-center text-muted-foreground text-base font-light">
-                    MK
-                  </div>
+                  <img src={koppanyImg} alt={t("team.name.koppany")} className="w-full h-full object-cover grayscale" />
                 </div>
               </div>
               <div className="space-y-0.5 text-[clamp(14px,1.08vw,16px)] font-light text-foreground">
