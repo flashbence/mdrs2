@@ -1,15 +1,25 @@
 
 
-## Mobilon fix header + nagyobb top padding
+## Desktop scroll "pattogás" javítása
 
-### Jelenlegi helyzet
-A header `absolute` pozíciójú és `pt-0` top paddinggel rendelkezik. Mobilon a tartalom alá scrollozható.
+### Probléma
+A `div` wrapper-en van `md:overflow-hidden`, de a `html`, `body` és `#root` elemek nem korlátozzák a scrollt, így az egér görgetésre "pattog" az oldal desktopn.
 
-### Változtatások
+### Megoldás
 
-**`src/components/Layout.tsx`**:
-1. Header: `absolute` helyett mobilon `fixed`, desktopn marad `absolute` → `fixed md:absolute`
-2. Top padding: `pt-0` helyett mobilon nagyobb → `pt-3 md:pt-0`
-3. Háttér mobilon: átlátszó helyett legyen `bg-background/95 backdrop-blur-sm md:bg-transparent md:backdrop-blur-none` hogy scrollnál is látható maradjon
-4. Main: mobilon kell egy top padding a fix header miatt → `pt-[70px] md:pt-0`
+**`src/index.css`** — Új media query hozzáadása a meglévő `@media (max-width: 767px)` blokk mellé:
+
+```css
+@media (min-width: 768px) {
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+}
+```
+
+### Hatásvizsgálat
+- **Desktop**: Teljesen megszünteti a scroll/pattogást. A `h-screen` + `overflow-hidden` elrendezés így ténylegesen zárt lesz.
+- **Mobil**: Nincs hatása, mert a szabály csak `min-width: 768px` felett él. A mobil scrollozás (`min-h-screen`, `overflow-visible`) változatlan marad.
 
