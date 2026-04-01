@@ -44,7 +44,7 @@ const Team = () => {
         }}
       />
 
-      <div className="w-full relative z-10 px-[clamp(40px,6.5vw,120px)]">
+      <div className="w-full relative z-10 px-[1vw] md:px-[clamp(40px,6.5vw,120px)]">
         {/* Desktop: 5-col grid with gaps, grayscale hover */}
         <div className="hidden md:grid grid-cols-5 gap-[6px] max-h-[calc(100vh-180px)]">
           {desktopTeam.map((member, i) => (
@@ -76,7 +76,7 @@ const Team = () => {
         </div>
 
         {/* Mobile: 2-col grid, no grayscale, visible text below */}
-        <div className="grid md:hidden grid-cols-2 gap-3 px-2 py-4">
+        <div className="grid md:hidden grid-cols-2 gap-3 px-[1vw] py-4">
           {mobileTeam.map((member, i) => (
             <div key={i}>
               <div className="aspect-square bg-muted overflow-hidden">
