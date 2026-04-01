@@ -23,7 +23,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Header */}
       <header className="absolute top-0 left-0 right-0 flex items-center justify-between px-[clamp(40px,6.5vw,120px)] py-4 bg-transparent z-50">
         <Link to="/" className="flex items-center">
-          <img src={logoImg} alt="MDRS2 Mérnökiroda" className="h-[30px] md:h-[45px] w-auto" />
+          <img src={logoImg} alt="MDRS2 Mérnökiroda" className="h-[45px] md:h-[68px] w-auto" />
         </Link>
 
         {/* Desktop nav */}
