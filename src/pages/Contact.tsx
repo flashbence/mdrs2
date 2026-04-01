@@ -79,7 +79,7 @@ const Contact = () => {
             {/* Person 1 */}
             <div className="flex-1 rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(16px,2vw,28px)] flex flex-col justify-center">
               <div className="flex items-center justify-between gap-[clamp(12px,1.5vw,17px)] mb-[clamp(14px,1.5vw,24px)]">
-                <h2 className="text-[clamp(20px,2vw,30px)] font-normal font-['Space_Grotesk'] text-foreground">
+                <h2 className="text-[clamp(20px,2vw,30px)] font-normal font-['Work_Sans'] text-foreground">
                   Madaras Botond
                 </h2>
                 <div className="w-[clamp(48px,5vw,69px)] h-[clamp(48px,5vw,69px)] rounded-full overflow-hidden border border-white/[0.22] bg-white/[0.12] shadow-[0_10px_22px_rgba(0,0,0,0.14)] flex-shrink-0">
