@@ -181,7 +181,7 @@ const Projects = () => {
         <div className="w-full rounded-[14px] overflow-hidden flex-1 min-h-0" style={{ maxHeight: '500px', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
           <table className="w-full text-left text-[clamp(13px,1.08vw,15px)]">
             <thead className="sticky top-0">
-              <tr className="bg-white/80 backdrop-blur-sm">
+              <tr className="bg-white/80 backdrop-blur-sm uppercase">
                 <th className="px-4 py-3 font-medium text-foreground">{headers[0]}</th>
                 <th className="px-4 py-3 font-medium text-foreground">{headers[1]}</th>
                 <th className="px-4 py-3 font-medium text-foreground">{headers[2]}</th>
