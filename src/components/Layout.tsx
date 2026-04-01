@@ -68,7 +68,15 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           className="md:hidden text-foreground z-50"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <X size={28} strokeWidth={1.2} /> : <Menu size={28} strokeWidth={1.2} />}
+          {menuOpen ? (
+            <X size={44} strokeWidth={0.8} />
+          ) : (
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
+              <line x1="4" y1="9" x2="20" y2="9" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="15" x2="20" y2="15" />
+            </svg>
+          )}
         </button>
       </header>
 
