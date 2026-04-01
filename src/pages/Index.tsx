@@ -12,7 +12,7 @@ const Index = () => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, rgba(181,195,211,0.7) 0%, rgba(181,195,211,0.35) 35%, rgba(220,230,240,0.1) 60%, transparent 80%)",
+            "linear-gradient(to top, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)",
         }}
       />
 
