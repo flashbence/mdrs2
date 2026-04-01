@@ -8,6 +8,14 @@
   html { font-size: 117%; }
 }
 
+@media (min-width: 768px) {
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+}
+
 @layer base {
   :root {
     --background: 210 14% 98%;       /* #FAFAFA */
