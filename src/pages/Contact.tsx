@@ -69,7 +69,7 @@ const Contact = () => {
                 <p>
                   {t("contact.follow")}{" "}
                   <a
-                    href="https://www.facebook.com/mdrs2"
+                    href="https://www.facebook.com/profile.php?id=100075795228768"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-light hover:opacity-80 transition-opacity border-b border-transparent hover:border-foreground/40 pb-px"
