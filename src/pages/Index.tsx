@@ -6,7 +6,7 @@ const Index = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="h-full relative flex flex-col items-center justify-start overflow-hidden bg-white">
+    <div className="h-full relative flex flex-col items-center justify-center overflow-hidden bg-white">
       {/* Blue gradient from bottom */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -17,7 +17,7 @@ const Index = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center mt-[10vh] mb-6 px-6">
+      <div className="relative z-10 text-center mb-4 px-6">
         <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading">
           {t("home.title")}
         </h1>
@@ -32,12 +32,12 @@ const Index = () => {
         </Link>
       </div>
 
-      {/* Hero building image */}
-      <div className="relative z-10 flex-1 flex items-end justify-center w-full px-[5vw]">
+      {/* Hero building image - clipped at bottom */}
+      <div className="relative z-10 w-full flex justify-center px-[5vw] overflow-hidden max-h-[45vh]">
         <img
           src={heroBuilding}
           alt="Structural engineering 3D model"
-          className="w-full max-w-[1100px] h-auto object-contain"
+          className="w-full max-w-[1100px] h-auto object-cover object-top"
         />
       </div>
     </div>
