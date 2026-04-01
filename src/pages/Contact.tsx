@@ -63,7 +63,7 @@ const Contact = () => {
               <div className="w-[clamp(26px,2.2vw,30px)] h-[clamp(26px,2.2vw,30px)] rounded-[10px] inline-flex items-center justify-center bg-white/[0.22] border border-white/[0.18] flex-shrink-0">
                 <Facebook className="w-[clamp(13px,1.3vw,16px)] h-[clamp(13px,1.3vw,16px)] text-foreground/80" />
               </div>
-              <div className="text-[clamp(13px,1vw,15px)] font-normal leading-relaxed text-foreground flex items-center">
+              <div className="text-[clamp(14px,1.08vw,16px)] font-light leading-relaxed text-foreground flex items-center">
                 <p>
                   {t("contact.follow")}{" "}
                   <a
