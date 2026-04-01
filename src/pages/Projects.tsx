@@ -179,7 +179,8 @@ const Projects = () => {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden sm:block w-full rounded-[14px] overflow-hidden flex-1 min-h-0 md:h-[calc(100vh-260px)] md:min-h-[400px] md:overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
+        <div className="hidden sm:block w-full rounded-[14px] overflow-hidden">
+          <div className="max-h-[500px] overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
           <table className="w-full text-left text-[clamp(13px,1.08vw,15px)]">
             <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
