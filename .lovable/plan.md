@@ -1,28 +1,29 @@
 
+A hibát megtaláltam: nem az történik, hogy a böngésző “eldob” egy képet, hanem a marquee most rossz pontra resetel.
 
-## Hero épületkép tetejének levágása — Index oldal
+Mi történik most
+- `src/pages/About.tsx`: egyetlen hosszú sor fut, benne `[..., ...projectImages]`
+- erre a sorra van `w-max` + `gap-6` + `animate-marquee`
+- `tailwind.config.ts`: az animáció `translate3d(-50%, 0, 0)`
 
-### Mi a probléma
-A kezdőoldalon a `hero-building.png` kép teteje kilóg / nem kívánt részt mutat. Le kell vágni a kép felső részét.
+Miért jelenik meg üres rész bal oldalon
+- a `-50%` a teljes animált sáv felére mozgat
+- de a teljes sáv nem 2 teljesen egyforma félből áll, mert a mostani flex sorban a gap-ek száma páratlan
+- ezért a felezőpont nem esik pontosan az első és második képsor határára
+- a loop reset egy picit túl korán / rossz helyen történik, és ez bal oldali “hiányzó képként” látszik
+- a nagy, részben transzparens PNG-k ezt még feltűnőbbé teszik
 
-### Megoldás
+Javítási terv
+1. Az About marquee-t 2 külön, azonos képcsoportból építem fel, nem egyetlen összefűzött listából
+2. Az animált track kap stabil szélességet: `min-w-max shrink-0`
+3. A képek/itemek külön kapnak `shrink-0`-t, hogy semmi ne nyomódjon össze
+4. A spacinget nem a teljes “félbevágott” track logikájára bízom, hanem az azonos csoportokon belül kezelem
+5. Így a `translate3d(-50%, 0, 0)` már pontosan egy teljes csoport szélességét jelenti, tehát nem fog eltűnni kép a bal szélen
 
-**Index.tsx** — az img wrapper div-en `overflow-hidden` már van (a szülőn), az img-et felfelé toljuk és a tetejét levágjuk:
+Érintett fájlok
+- `src/pages/About.tsx`
+- szükség esetén finomhangolás: `tailwind.config.ts`
 
-- Az `<img>` elemet becsomagoljuk egy `overflow-hidden` div-be
-- `object-cover` + `object-bottom` kombináció: a kép alját tartja meg, a tetejét vágja le
-- Opcionálisan `clip-path: inset(15% 0 0 0)` vagy negatív `margin-top` a kép tetejének eltüntetéséhez
-
-Konkrétan:
-```jsx
-<div className="flex justify-center px-[5vw] w-full min-h-0 flex-1 overflow-hidden">
-  <img
-    src={heroBuilding}
-    alt="Structural engineering 3D model"
-    className="w-full max-w-[1100px] object-cover object-bottom"
-  />
-</div>
-```
-
-Az `object-contain` → `object-cover` + `object-bottom` váltás biztosítja, hogy a kép alja látszik, a teteje pedig levágódik a konténer határánál.
-
+Technikai megjegyzés
+- a fő ok most a marquee szerkezete, nem az asset import
+- ha a szerkezeti javítás után valamelyik kép még mindig “résesnek” látszik, akkor annak a PNG vásznában maradt túl nagy üres perem, és azt külön lehet még levágni
