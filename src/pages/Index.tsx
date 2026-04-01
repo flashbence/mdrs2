@@ -23,7 +23,7 @@ const Index = () => {
           <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading sm:whitespace-nowrap break-words">
             {t("home.title")}
           </h1>
-          <p className="text-xs sm:text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-4xl mx-auto font-body break-words">
+          <p className="text-sm sm:text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-4xl mx-auto font-body break-words">
             {t("home.subtitle")}
           </p>
           <Link
