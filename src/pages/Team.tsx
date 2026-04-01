@@ -64,7 +64,7 @@ const Team = () => {
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-[clamp(8px,1vw,16px)] pt-[clamp(40px,4vw,70px)]">
                   <span className="text-white font-heading font-light text-[clamp(13px,1.1vw,20px)] leading-tight">
-                    {member.name}
+                    {t(member.nameKey)}
                   </span>
                   <span className="text-white/80 font-body font-light text-[clamp(10px,0.8vw,15px)] leading-tight mt-[2px]">
                     {t(member.roleKey)}
