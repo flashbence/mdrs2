@@ -28,7 +28,7 @@ const Index = () => {
           </p>
           <Link
             to="/about"
-            className="inline-block px-10 py-2.5 rounded-full bg-white/60 backdrop-blur-sm border border-white/40 text-sm font-light text-foreground/80 hover:bg-white/80 transition-all shadow-sm"
+            className="inline-flex justify-center rounded-[11px] px-[89px] py-2 bg-white/[0.12] backdrop-blur-[18px] border border-white/[0.18] text-[0.89em] tracking-normal font-light text-foreground cursor-pointer transition-all duration-[250ms] ease-in-out shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
           >
             {t("home.cta")}
           </Link>
