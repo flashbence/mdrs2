@@ -147,7 +147,7 @@ const Projects = () => {
   const hasStatus = active !== "szakertes";
 
   return (
-    <div className="h-full relative flex flex-col items-center justify-center px-4 md:px-8 bg-white font-body">
+    <div className="h-full relative flex flex-col items-center justify-center px-8 md:px-16 lg:px-24 bg-white font-body">
       {/* Blue gradient from bottom */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)'
