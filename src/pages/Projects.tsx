@@ -160,7 +160,7 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={className={`px-6 py-2 rounded-[11px] text-[1.11em] font-normal cursor-pointer transition-all duration-200
+              className={`px-6 py-2 rounded-[11px] text-[1.11em] font-normal cursor-pointer transition-all duration-200
                 backdrop-blur-[18px] border
                 ${active === cat
                   ? "bg-[#567395] text-white border-[#111] shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
