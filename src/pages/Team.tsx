@@ -63,10 +63,10 @@ const Team = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-[clamp(8px,1vw,16px)]">
-                  <span className="text-white font-heading font-semibold text-[clamp(11px,0.95vw,18px)] leading-tight">
+                  <span className="text-white font-heading font-light text-[clamp(13px,1.1vw,20px)] leading-tight">
                     {member.name}
                   </span>
-                  <span className="text-white/80 font-body text-[clamp(8px,0.7vw,13px)] leading-tight mt-[2px]">
+                  <span className="text-white/80 font-body font-light text-[clamp(10px,0.8vw,15px)] leading-tight mt-[2px]">
                     {member.role}
                   </span>
                 </div>
