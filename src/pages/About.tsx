@@ -57,7 +57,7 @@ const About = () => {
                   key={`${group}-${i}`}
                   src={img}
                   alt={`Project ${i + 1}`}
-                  className="h-[clamp(180px,18vw,280px)] w-auto object-contain shrink-0 flex-none"
+                  className="h-[clamp(130px,13vw,200px)] w-auto object-contain shrink-0 flex-none"
                   loading="eager"
                 />
               ))}
