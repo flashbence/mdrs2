@@ -1,25 +1,25 @@
 
 
-## Desktop scroll "pattogás" javítása
+## Nav bar alatti hely kiterjesztése 767px-ig
 
 ### Probléma
-A `div` wrapper-en van `md:overflow-hidden`, de a `html`, `body` és `#root` elemek nem korlátozzák a scrollt, így az egér görgetésre "pattog" az oldal desktopn.
+Néhány oldal túl korán szünteti meg a mobil felső paddinget — a Contact oldalon `sm:pt-0` (640px-től), így 640–767px között a tartalom belóg a navbar alá.
 
-### Megoldás
+### Változtatások
 
-**`src/index.css`** — Új media query hozzáadása a meglévő `@media (max-width: 767px)` blokk mellé:
+**`src/pages/Contact.tsx`** (10. sor):
+- `pt-20 sm:pt-0` → `pt-20 md:pt-0`
+- Így a felső padding 767px-ig megmarad, és csak 768px-től (desktop) szűnik meg.
 
-```css
-@media (min-width: 768px) {
-  html, body, #root {
-    height: 100%;
-    overflow: hidden;
-    overscroll-behavior: none;
-  }
-}
-```
+**Többi oldal ellenőrzése:**
+- **Team**: `pt-20 md:pt-0` — már jó
+- **About**: `pt-[120px]` mindig — jó
+- **Projects**: `pt-20 sm:pt-[120px]` — a padding megmarad, csak mérete változik, jó
+- **Index**: `pt-[120px]` mindig — jó
 
-### Hatásvizsgálat
-- **Desktop**: Teljesen megszünteti a scroll/pattogást. A `h-screen` + `overflow-hidden` elrendezés így ténylegesen zárt lesz.
-- **Mobil**: Nincs hatása, mert a szabály csak `min-width: 768px` felett él. A mobil scrollozás (`min-h-screen`, `overflow-visible`) változatlan marad.
+Tehát csak a **Contact** oldalt kell javítani.
+
+### Hatás
+- **Mobil/tablet (< 768px)**: A contact oldal tartalma nem lóg be a navbar alá
+- **Desktop (≥ 768px)**: Változatlan, a centered layout kezeli a pozícionálást
 
