@@ -1,41 +1,19 @@
 
 
-## MDRS2 Mérnökiroda – Weboldal
+## Betűvastagság és méret koherencia – Team oldal
 
-### Koncepció
-Minimalista, no-scroll (viewport-height) oldalak, kétnyelvű (HU/EN) mérnöki cég weboldal. Világos, tiszta megjelenés a screenshot-ok alapján.
+### Probléma
+A Kapcsolat oldalon `font-light` (300) van használva mindenhol, míg a Team oldalon `font-semibold` (600) a nevek és a mobilos szövegek. Ez inkonzisztens.
 
-### Oldalak
+### Változtatások
 
-**1. Kezdőlap (Hero)**
-- MDRS2 logó bal felső sarokban
-- Navigáció: Bemutatkozás | Munkatársaink | Munkáink | Kapcsolat
-- EN/HU nyelvváltó jobb felső sarokban
-- Központi cím: "Tartószerkezeti tervezés és szakértés"
-- Alcím szöveg
-- "Bővebben" gomb → Bemutatkozás oldalra navigál
-- Háttérben 3D épületszerkezet kép
+**Team.tsx – Desktop hover overlay (sor 66-71)**
+- Nevek: `font-semibold` → `font-light`, méret `clamp(11px,0.95vw,18px)` → `clamp(13px,1.1vw,20px)`
+- Szerepkörök: méret `clamp(8px,0.7vw,13px)` → `clamp(10px,0.8vw,15px)`, `font-light` hozzáadás
 
-**2. Bemutatkozás (Rólunk)**
-- Cégbemutató szöveg (a screenshot-on látható tartalom)
-- Alul 4 projekt/referencia kép sor
+**Team.tsx – Mobile szövegek (sor 90-95)**
+- Nevek: `font-semibold text-sm` → `font-light text-base`
+- Szerepkörök: `text-xs` → `text-sm`, `font-light` hozzáadás
 
-**3. Munkatársaink**
-- Csapattagok kártyái: név, beosztás, opcionálisan fotó
-- Rácsos elrendezés, egy képernyőn elfér
-
-**4. Munkáink**
-- Projektek galériája kártyás elrendezésben
-- Projekt név + kategória + kép
-
-**5. Kapcsolat**
-- Elérhetőségek: cím, telefon, email
-- Középre rendezett, letisztult
-
-### Technikai megoldások
-- Nyelvváltás React context-tel (HU/EN), URL-ben `/en` prefix angol verzióhoz
-- Minden oldal `h-screen` – nincs scroll
-- Smooth page transitions
-- Teljesen reszponzív (mobil hamburger menü)
-- Képek placeholder-ként amíg a végleges tartalom megérkezik
+Ezzel minden szöveg `font-light` (300) lesz az egész oldalon, koherens a Kapcsolat oldallal, és picit nagyobb méretben jelenik meg.
 
