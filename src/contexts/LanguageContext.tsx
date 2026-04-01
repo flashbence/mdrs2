@@ -20,10 +20,10 @@ const translations: Record<Language, Record<string, string>> = {
     "home.subtitle": "Szerkezetben gondolkodunk – koncepciótól a megvalósulásig. Vasbeton, acél-, fa- és üvegszerkezetek az alapoktól a tetőig.",
     "home.cta": "Bővebben",
     // About
-    "about.title": "Bemutatkozás",
-    "about.p1": "Az MDRS2 Mérnökiroda tartószerkezeti tervezéssel és szakértéssel foglalkozik. Irodánk az építőipar szinte minden területén szerzett tapasztalatot az elmúlt évek során.",
-    "about.p2": "Tervezési tevékenységünk kiterjed vasbeton, acél-, fa- és üvegszerkezetek komplex tervezésére, az alapozástól a tetőszerkezetig. Munkánk során a koncepcionális tervezéstől a kiviteli tervek készítéséig vállalunk feladatokat.",
-    "about.p3": "Szakértői tevékenységünk keretében épületdiagnosztikát, állapotfelmérést és szerkezeti felülvizsgálatot végzünk. Célunk a megbízható, gazdaságos és esztétikus szerkezeti megoldások kidolgozása.",
+    "about.title": "Rólunk",
+    "about.p1": "2018-ban, 20 év szerkezettervezői és szakértői gyakorlat birtokában alapítottuk az mdrs2 Mérnöki Szolgáltató Kft-t, melynek fő profilja általános tartószerkezeti tervezés és szakértés, elsődlegesen magasépítési és műtárgyépítési területen. Fő profilunk az általános szerkezettervezés, szakmai tevékenységünk kiterjed vasbeton, acél, fa és falazott szerkezetekre, építményekre",
+    "about.p2": "Tervezési feladatainkat a koncepcionális alapvetésektől a kiviteli, illetve megvalósulási tervfázisokig végezzük. Portfóliónkban szerepelnek új épületek és átalakítások, felújítások, műemléki rehabilitációs feladatok egyaránt. Munkánk során célunk a műszakilag optimális, gazdaságos megoldások megtalálása, tervezése, legyen szó kisebb vagy nagyobb lakóépületről, középületről, ipari szerkezetről, speciális mérnöki műtárgyról. Kiemelt figyelemmel követjük az új technológiákat, a jövő megoldásai és anyagait egyaránt. Szakértői feladataink az általános tartószerkezeti állapotértékeléstől a speciális beavatkozások, megerősítések vizsgálatáig vagy éppen tervezéséig átfogják a szakmai területeket.",
+    "about.p3": "Organikusan fejlődő irodánk büszke partnere számos építészirodának és kivitelező szakvállalatnak, folyamatosan fejlesztett szakmai kompetenciáink pedig alapot adnak a jövőbeli mérnöki kihívásoknak való megfelelésre, a jövő épületeinek és építményeinek megtervezésére! A tervezői és szakértői munkához szükséges kamarai jogosultságokkal rendelkezünk: T, SZÉS-1, VZ-TER, VZ-TEL.",
     // Team
     "team.title": "Munkatársaink",
     "team.placeholder.role": "Szerkezettervező mérnök",
