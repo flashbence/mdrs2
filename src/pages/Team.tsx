@@ -2,38 +2,53 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { User } from "lucide-react";
 
 const placeholderTeam = [
-  { name: "Személy 1", nameEn: "Person 1" },
-  { name: "Személy 2", nameEn: "Person 2" },
-  { name: "Személy 3", nameEn: "Person 3" },
-  { name: "Személy 4", nameEn: "Person 4" },
+  { name: "Személy 1", nameEn: "Person 1", row: 0, col: 0 },
+  { name: "Személy 2", nameEn: "Person 2", row: 0, col: 1 },
+  { name: "Személy 3", nameEn: "Person 3", row: 0, col: 3 },
+  { name: "Személy 4", nameEn: "Person 4", row: 0, col: 4 },
+  { name: "Személy 5", nameEn: "Person 5", row: 1, col: 0 },
+  { name: "Személy 6", nameEn: "Person 6", row: 1, col: 2 },
+  { name: "Személy 7", nameEn: "Person 7", row: 1, col: 3 },
+  { name: "Személy 8", nameEn: "Person 8", row: 1, col: 4 },
 ];
 
 const Team = () => {
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
 
   return (
-    <div className="h-full flex flex-col items-center justify-center px-6 md:px-12">
-      <div className="max-w-4xl w-full">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-10 text-center">
-          {t("team.title")}
-        </h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {placeholderTeam.map((member, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center text-center group"
-            >
-              <div className="w-28 h-28 md:w-32 md:h-32 rounded-full bg-muted flex items-center justify-center mb-4 group-hover:bg-secondary transition-colors">
-                <User className="w-10 h-10 text-muted-foreground" />
+    <div className="h-full flex flex-col items-center justify-center px-6 md:px-12 relative">
+      {/* Blue gradient from bottom */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(181,195,211,0.45) 0%, rgba(181,195,211,0.15) 30%, transparent 60%)",
+        }}
+      />
+
+      <div className="max-w-[1200px] w-full relative z-10">
+        {/* Grid: 5 columns, 2 rows, with specific gaps matching the screenshot */}
+        <div className="grid grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
+          {placeholderTeam.map((member, i) => {
+            // Calculate grid placement
+            const gridCol = member.col + 1; // CSS grid is 1-indexed
+            const gridRow = member.row + 1;
+
+            return (
+              <div
+                key={i}
+                className="group cursor-pointer"
+                style={{
+                  gridColumn: gridCol,
+                  gridRow: gridRow,
+                }}
+              >
+                <div className="aspect-[4/5] bg-muted flex items-center justify-center overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+                  <User className="w-16 h-16 text-muted-foreground" />
+                </div>
               </div>
-              <h3 className="font-semibold text-sm text-foreground">
-                {lang === "hu" ? member.name : member.nameEn}
-              </h3>
-              <p className="text-xs text-muted-foreground mt-1">
-                {t("team.placeholder.role")}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
