@@ -148,7 +148,7 @@ const Projects = () => {
 
   return (
     <div
-      className="min-h-screen md:h-full relative flex flex-col items-center md:justify-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden"
+      className="min-h-screen md:h-full relative flex flex-col items-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden"
       style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.5) 0%, rgba(181,195,211,0.25) 30%, rgba(181,195,211,0.1) 55%, white 75%)'
       }}
@@ -179,7 +179,8 @@ const Projects = () => {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden sm:block w-full rounded-[14px] overflow-hidden flex-1 min-h-0 md:h-[calc(100vh-260px)] md:min-h-[400px] md:overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
+        <div className="hidden sm:block w-full rounded-[14px] overflow-hidden">
+          <div className="max-h-[500px] overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
           <table className="w-full text-left text-[clamp(13px,1.08vw,15px)]">
             <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
@@ -205,6 +206,7 @@ const Projects = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
         {/* Mobile Card Layout */}
