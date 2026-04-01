@@ -1,24 +1,24 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 
-import molDufi01 from "@/assets/projects/mol-dufi-01.jpg";
-import mem01 from "@/assets/projects/mem-01.jpg";
-import lake01 from "@/assets/projects/lake-01.jpg";
-import molDufi02 from "@/assets/projects/mol-dufi-02.jpg";
-import nagymaros01 from "@/assets/projects/nagymaros-01.jpg";
-import kispestiOvi01 from "@/assets/projects/kispesti-ovi-01.jpg";
-import pasaret01 from "@/assets/projects/pasaret-01.jpg";
-import ecseri02 from "@/assets/projects/ecseri-02.jpg";
-import menesi02 from "@/assets/projects/menesi-02.jpg";
-import gizella02 from "@/assets/projects/gizella-02.jpg";
-import rg01 from "@/assets/projects/rg-01.jpg";
-import hermanOtto01 from "@/assets/projects/herman-otto-01.jpg";
-import ecseri01 from "@/assets/projects/ecseri-01.jpg";
-import arnyas01 from "@/assets/projects/arnyas-01.jpg";
-import almassyTer02 from "@/assets/projects/almassy-ter-02.jpg";
-import papa01 from "@/assets/projects/papa-01.jpg";
-import kiraly01 from "@/assets/projects/kiraly-01.jpg";
-import mem02 from "@/assets/projects/mem-02.jpg";
-import almassyTer01 from "@/assets/projects/almassy-ter-01.jpg";
+import molDufi01 from "@/assets/projects/mol-dufi-01.png";
+import mem01 from "@/assets/projects/mem-01.png";
+import lake01 from "@/assets/projects/lake-01.png";
+import molDufi02 from "@/assets/projects/mol-dufi-02.png";
+import nagymaros01 from "@/assets/projects/nagymaros-01.png";
+import kispestiOvi01 from "@/assets/projects/kispesti-ovi-01.png";
+import pasaret01 from "@/assets/projects/pasaret-01.png";
+import ecseri02 from "@/assets/projects/ecseri-02.png";
+import menesi02 from "@/assets/projects/menesi-02.png";
+import gizella02 from "@/assets/projects/gizella-02.png";
+import rg01 from "@/assets/projects/rg-01.png";
+import hermanOtto01 from "@/assets/projects/herman-otto-01.png";
+import ecseri01 from "@/assets/projects/ecseri-01.png";
+import arnyas01 from "@/assets/projects/arnyas-01.png";
+import almassyTer02 from "@/assets/projects/almassy-ter-02.png";
+import papa01 from "@/assets/projects/papa-01.png";
+import kiraly01 from "@/assets/projects/kiraly-01.png";
+import mem02 from "@/assets/projects/mem-02.png";
+import almassyTer01 from "@/assets/projects/almassy-ter-01.png";
 
 const projectImages = [
   molDufi01, mem01, lake01, molDufi02, nagymaros01,
@@ -31,7 +31,7 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="relative h-full flex flex-col items-center justify-center">
+    <div className="relative h-full flex flex-col items-center justify-center bg-white">
       {/* Blue gradient from top */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to bottom, rgba(181,195,211,0.35) 0%, rgba(181,195,211,0.15) 40%, rgba(255,255,255,0.1) 70%, white 100%)'
