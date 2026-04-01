@@ -9,7 +9,7 @@ import peterImg from "@/assets/team/kincses-peter.jpeg";
 import benceImg from "@/assets/team/gulacsy-bence.jpeg";
 import erzsebetImg from "@/assets/team/tamas-erzsebet.jpeg";
 
-const teamMembers = [
+const desktopTeam = [
   { row: 0, col: 0, img: botondImg, name: "Madaras Botond", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1)" },
   { row: 0, col: 1, img: koppanyImg, name: "Madaras Koppány", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1, VZ-TER, VZ-TEL)" },
   { row: 0, col: 3, img: rekaImg, name: "Dobnerné Éliás Réka", role: "szerkezettervező mérnök (T)" },
@@ -18,6 +18,17 @@ const teamMembers = [
   { row: 1, col: 2, img: peterImg, name: "Kincses Péter", role: "szerkezettervező mérnök" },
   { row: 1, col: 3, img: benceImg, name: "Gulácsy Bence", role: "szerkezettervező mérnök" },
   { row: 1, col: 4, img: erzsebetImg, name: "Bálintné Tamás Erzsébet", role: "szerkezettervező mérnök" },
+];
+
+const mobileTeam = [
+  { img: botondImg, name: "Madaras Botond", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1)" },
+  { img: koppanyImg, name: "Madaras Koppány", role: "szerkezettervező mérnök, tulajdonos, ügyvezető (T, SZÉS-1, VZ-TER, VZ-TEL)" },
+  { img: rekaImg, name: "Dobnerné Éliás Réka", role: "szerkezettervező mérnök (T)" },
+  { img: milanImg, name: "Kerecsanin Milán", role: "szerkezettervező mérnök" },
+  { img: peterImg, name: "Kincses Péter", role: "szerkezettervező mérnök" },
+  { img: benceImg, name: "Gulácsy Bence", role: "szerkezettervező mérnök" },
+  { img: erzsebetImg, name: "Bálintné Tamás Erzsébet", role: "szerkezettervező mérnök" },
+  { img: ozzieImg, name: "Ozzie", role: "általános irodai segéderő" },
 ];
 
 const Team = () => {
@@ -34,8 +45,9 @@ const Team = () => {
       />
 
       <div className="w-full relative z-10 px-[clamp(40px,6.5vw,120px)]">
-        <div className="grid grid-cols-5 gap-[6px]">
-          {teamMembers.map((member, i) => (
+        {/* Desktop: 5-col grid with gaps, grayscale hover */}
+        <div className="hidden md:grid grid-cols-5 gap-[6px]">
+          {desktopTeam.map((member, i) => (
             <div
               key={i}
               className="group cursor-pointer relative"
@@ -50,7 +62,6 @@ const Team = () => {
                   alt={member.name}
                   className="w-full h-full object-cover"
                 />
-                {/* Hover overlay with name & role */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-[clamp(8px,1vw,16px)]">
                   <span className="text-white font-heading font-semibold text-[clamp(11px,0.95vw,18px)] leading-tight">
                     {member.name}
@@ -59,6 +70,29 @@ const Team = () => {
                     {member.role}
                   </span>
                 </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Mobile: 2-col grid, no grayscale, visible text below */}
+        <div className="grid md:hidden grid-cols-2 gap-3 overflow-y-auto max-h-[calc(100vh-80px)] px-2 py-4">
+          {mobileTeam.map((member, i) => (
+            <div key={i}>
+              <div className="aspect-square bg-muted overflow-hidden">
+                <img
+                  src={member.img}
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="mt-1.5">
+                <p className="font-heading font-semibold text-sm leading-tight text-foreground">
+                  {member.name}
+                </p>
+                <p className="font-body text-xs leading-tight text-muted-foreground mt-0.5">
+                  {member.role}
+                </p>
               </div>
             </div>
           ))}
