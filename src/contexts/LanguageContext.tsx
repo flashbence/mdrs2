@@ -35,6 +35,14 @@ const translations: Record<Language, Record<string, string>> = {
     "team.role.peter": "szerkezettervező mérnök",
     "team.role.bence": "szerkezettervező mérnök",
     "team.role.erzsebet": "szerkezettervező mérnök",
+    "team.name.botond": "Madaras Botond",
+    "team.name.koppany": "Madaras Koppány",
+    "team.name.reka": "Dobnerné Éliás Réka",
+    "team.name.milan": "Kerecsanin Milán",
+    "team.name.ozzie": "Ozzie",
+    "team.name.peter": "Kincses Péter",
+    "team.name.bence": "Gulácsy Bence",
+    "team.name.erzsebet": "Bálintné Tamás Erzsébet",
     // Projects
     "projects.title": "Munkáink",
     // Contact
