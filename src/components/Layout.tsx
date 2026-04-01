@@ -69,9 +69,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? (
-            <X size={44} strokeWidth={0.8} />
+            <X size={44} strokeWidth={0.4} />
           ) : (
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.4" strokeLinecap="round">
               <line x1="4" y1="9" x2="20" y2="9" />
               <line x1="4" y1="12" x2="20" y2="12" />
               <line x1="4" y1="15" x2="20" y2="15" />
