@@ -47,7 +47,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {/* Language switcher - two separate buttons */}
           <button
             onClick={() => setLang("en")}
-            className={`text-xs font-light tracking-wide px-2 py-1 rounded transition-colors ${
+            className={`text-xs font-normal tracking-wide px-2 py-1 rounded transition-colors ${
               lang === "en" ? "text-foreground bg-[#FAFAFA]" : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -55,7 +55,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </button>
           <button
             onClick={() => setLang("hu")}
-            className={`text-xs font-light tracking-wide px-2 py-1 rounded transition-colors ${
+            className={`text-xs font-normal tracking-wide px-2 py-1 rounded transition-colors ${
               lang === "hu" ? "text-foreground bg-[#FAFAFA]" : "text-muted-foreground hover:text-foreground"
             }`}
           >
