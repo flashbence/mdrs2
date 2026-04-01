@@ -20,10 +20,10 @@ const Contact = () => {
           <div className="rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(14px,1.8vw,24px)]">
             {/* Header */}
             <div className="flex flex-col gap-1.5 mb-[clamp(20px,2.5vw,36px)]">
-              <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-normal font-['Work_Sans'] text-foreground">
+              <h1 className="text-[clamp(1.1875rem,1.84vw,28px)] font-light tracking-normal font-['Work_Sans'] text-foreground">
                 {t("contact.glass.title")}
               </h1>
-              <p className="text-[clamp(15px,1.19vw,18px)] font-light text-muted-foreground">
+              <p className="text-[clamp(0.9375rem,1.19vw,18px)] font-light text-muted-foreground">
                 {t("contact.glass.subtitle")}
               </p>
             </div>
@@ -33,7 +33,7 @@ const Contact = () => {
               <div className="w-[clamp(26px,2.2vw,30px)] h-[clamp(26px,2.2vw,30px)] rounded-[10px] inline-flex items-center justify-center bg-white/[0.22] border border-white/[0.18] flex-shrink-0">
                 <Building2 className="w-[clamp(13px,1.3vw,16px)] h-[clamp(13px,1.3vw,16px)] text-foreground/80" />
               </div>
-              <div className="space-y-0.5 text-[clamp(14px,1.08vw,16px)] font-light leading-relaxed text-foreground">
+              <div className="space-y-0.5 text-[clamp(0.875rem,1.08vw,16px)] font-light leading-relaxed text-foreground">
                 <p className="font-light">mdrs2 Mérnöki Szolgáltató Kft.</p>
                 <p className="font-light">{t("contact.office")}</p>
                 <a href="mailto:info@mdrs2.hu" className="font-light hover:opacity-80 transition-opacity border-b border-transparent hover:border-foreground/40 pb-px">
@@ -50,7 +50,7 @@ const Contact = () => {
               <div className="w-[clamp(26px,2.2vw,30px)] h-[clamp(26px,2.2vw,30px)] rounded-[10px] inline-flex items-center justify-center bg-white/[0.22] border border-white/[0.18] flex-shrink-0">
                 <FileText className="w-[clamp(13px,1.3vw,16px)] h-[clamp(13px,1.3vw,16px)] text-foreground/80" />
               </div>
-              <div className="space-y-0.5 text-[clamp(14px,1.08vw,16px)] font-light leading-relaxed text-foreground">
+              <div className="space-y-0.5 text-[clamp(0.875rem,1.08vw,16px)] font-light leading-relaxed text-foreground">
                 <p className="font-light">{t("contact.hq")}</p>
                 <p className="font-light">{t("contact.taxnum")}: 26579117-2-42</p>
                 <p className="font-light">{t("contact.regnum")}: 01 09 333179</p>
@@ -65,7 +65,7 @@ const Contact = () => {
               <div className="w-[clamp(26px,2.2vw,30px)] h-[clamp(26px,2.2vw,30px)] rounded-[10px] inline-flex items-center justify-center bg-white/[0.22] border border-white/[0.18] flex-shrink-0">
                 <Facebook className="w-[clamp(13px,1.3vw,16px)] h-[clamp(13px,1.3vw,16px)] text-foreground/80" />
               </div>
-              <div className="text-[clamp(14px,1.08vw,16px)] font-light leading-relaxed text-foreground flex items-center">
+              <div className="text-[clamp(0.875rem,1.08vw,16px)] font-light leading-relaxed text-foreground flex items-center">
                 <p>
                   {t("contact.follow")}{" "}
                   <a
@@ -86,14 +86,14 @@ const Contact = () => {
             {/* Person 1 */}
             <div className="flex-1 rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(14px,1.8vw,24px)] flex flex-col justify-center">
               <div className="flex items-center justify-between gap-[clamp(10px,1.3vw,15px)] mb-[clamp(12px,1.3vw,20px)]">
-                <h2 className="text-[clamp(19px,1.84vw,28px)] font-light font-['Work_Sans'] text-foreground">
+                <h2 className="text-[clamp(1.1875rem,1.84vw,28px)] font-light font-['Work_Sans'] text-foreground">
                   {t("team.name.botond")}
                 </h2>
                 <div className="w-[clamp(44px,4.5vw,60px)] h-[clamp(44px,4.5vw,60px)] rounded-full overflow-hidden border border-white/[0.22] bg-white/[0.12] shadow-[0_10px_22px_rgba(0,0,0,0.14)] flex-shrink-0">
                   <img src={botondImg} alt={t("team.name.botond")} className="w-full h-full object-cover grayscale" />
                 </div>
               </div>
-              <div className="space-y-0.5 text-[clamp(14px,1.08vw,16px)] font-light text-foreground">
+              <div className="space-y-0.5 text-[clamp(0.875rem,1.08vw,16px)] font-light text-foreground">
                 <a href="mailto:madaras.botond@mdrs2.hu" className="block font-light hover:opacity-80 transition-opacity">
                   madaras.botond@mdrs2.hu
                 </a>
@@ -106,14 +106,14 @@ const Contact = () => {
             {/* Person 2 */}
             <div className="flex-1 rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(14px,1.8vw,24px)] flex flex-col justify-center">
               <div className="flex items-center justify-between gap-[clamp(10px,1.3vw,15px)] mb-[clamp(12px,1.3vw,20px)]">
-                <h2 className="text-[clamp(19px,1.84vw,28px)] font-light font-['Work_Sans'] text-foreground">
+                <h2 className="text-[clamp(1.1875rem,1.84vw,28px)] font-light font-['Work_Sans'] text-foreground">
                   {t("team.name.koppany")}
                 </h2>
                 <div className="w-[clamp(44px,4.5vw,60px)] h-[clamp(44px,4.5vw,60px)] rounded-full overflow-hidden border border-white/[0.22] bg-white/[0.12] shadow-[0_10px_22px_rgba(0,0,0,0.14)] flex-shrink-0">
                   <img src={koppanyImg} alt={t("team.name.koppany")} className="w-full h-full object-cover grayscale" />
                 </div>
               </div>
-              <div className="space-y-0.5 text-[clamp(14px,1.08vw,16px)] font-light text-foreground">
+              <div className="space-y-0.5 text-[clamp(0.875rem,1.08vw,16px)] font-light text-foreground">
                 <a href="mailto:madaras.koppany@mdrs2.hu" className="block font-light hover:opacity-80 transition-opacity">
                   madaras.koppany@mdrs2.hu
                 </a>
