@@ -17,9 +17,9 @@ const Index = () => {
       />
 
       {/* Layout: text + image, pushed towards center-bottom */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-end pb-0">
+      <div className="relative z-10 flex h-full flex-col items-center justify-end pb-0 pt-24 md:pt-28">
         {/* Text content */}
-        <div className="px-6 text-center mb-4">
+        <div className="px-6 text-center mb-4 shrink-0">
           <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading whitespace-nowrap">
             {t("home.title")}
           </h1>
@@ -34,12 +34,12 @@ const Index = () => {
           </Link>
         </div>
 
-        {/* Hero building image */}
-        <div className="flex justify-center px-[5vw] w-full">
+        {/* Hero building image — shrinks when viewport is short */}
+        <div className="flex justify-center px-[5vw] w-full min-h-0 flex-1">
           <img
             src={heroBuilding}
             alt="Structural engineering 3D model"
-            className="w-full max-w-[1100px] h-auto object-contain"
+            className="w-full max-w-[1100px] object-contain object-bottom"
           />
         </div>
       </div>
