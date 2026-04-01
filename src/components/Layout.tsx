@@ -34,7 +34,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
               to={item.path}
               className={`text-[1.25rem] font-light font-['Source_Sans_3'] tracking-wide transition-colors ${
                 isActive(item.path)
-                  ? "text-foreground underline underline-offset-4"
+                  ? "text-foreground underline decoration-[0.5px] underline-offset-4"
                   : "text-muted-foreground"
               }`}
             >
