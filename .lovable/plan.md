@@ -1,29 +1,38 @@
 
-A hibát megtaláltam: nem az történik, hogy a böngésző “eldob” egy képet, hanem a marquee most rossz pontra resetel.
 
-Mi történik most
-- `src/pages/About.tsx`: egyetlen hosszú sor fut, benne `[..., ...projectImages]`
-- erre a sorra van `w-max` + `gap-6` + `animate-marquee`
-- `tailwind.config.ts`: az animáció `translate3d(-50%, 0, 0)`
+## Egységes navbar-alatti távolság + zsugorodó képek
 
-Miért jelenik meg üres rész bal oldalon
-- a `-50%` a teljes animált sáv felére mozgat
-- de a teljes sáv nem 2 teljesen egyforma félből áll, mert a mostani flex sorban a gap-ek száma páratlan
-- ezért a felezőpont nem esik pontosan az első és második képsor határára
-- a loop reset egy picit túl korán / rossz helyen történik, és ez bal oldali “hiányzó képként” látszik
-- a nagy, részben transzparens PNG-k ezt még feltűnőbbé teszik
+### Jelenlegi helyzet
+- **Contact**: `md:fixed md:inset-0` + `items-center justify-center` — a glass card középre kerül, a navbar alatti rés természetesen adódik
+- **About**: `justify-center`, nincs explicit top padding — a tartalom függőlegesen középre áll
+- **Team**: `justify-center`, nincs top padding
+- **Projects**: `pt-28` (112px) fix top padding
+- **Index**: `pt-24 md:pt-28`
 
-Javítási terv
-1. Az About marquee-t 2 külön, azonos képcsoportból építem fel, nem egyetlen összefűzött listából
-2. Az animált track kap stabil szélességet: `min-w-max shrink-0`
-3. A képek/itemek külön kapnak `shrink-0`-t, hogy semmi ne nyomódjon össze
-4. A spacinget nem a teljes “félbevágott” track logikájára bízom, hanem az azonos csoportokon belül kezelem
-5. Így a `translate3d(-50%, 0, 0)` már pontosan egy teljes csoport szélességét jelenti, tehát nem fog eltűnni kép a bal szélen
+A navbar magassága kb. 100px (68px logo + 2×16px padding). A Contact oldalon a pill és a navbar közti távolság a vertikális centírozásból adódik.
 
-Érintett fájlok
-- `src/pages/About.tsx`
-- szükség esetén finomhangolás: `tailwind.config.ts`
+### Terv
 
-Technikai megjegyzés
-- a fő ok most a marquee szerkezete, nem az asset import
-- ha a szerkezeti javítás után valamelyik kép még mindig “résesnek” látszik, akkor annak a PNG vásznában maradt túl nagy üres perem, és azt külön lehet még levágni
+**1. Egységes top padding minden oldalon**
+- A Contact oldal referenciaként szolgál: ott a tartalom vertikálisan középre van igazítva, és a navbar kb. 100px-t foglal
+- Az About, Team és Projects oldalakra egységesen `pt-[120px]` padding-top kerül (navbar magasság + kis gap), és a `justify-center` helyett `justify-start`-ra váltunk ahol szükséges, hogy a navbar alatti rés konzisztens legyen
+- Az Index oldal megtartja a jelenlegi logikáját (hero layout), de a `pt` értéke szintén 120px-re egységesül
+
+**2. About oldal — képek zsugorodása kis képernyőn**
+- A marquee képek már `clamp(180px, 18vw, 280px)` magasságúak — ez jól skálázódik
+- Extra: a szöveges tartalom is kap `pt-[120px]`-t, a `justify-center` eltávolítható, hogy felülről induljon
+
+**3. Team oldal — képek zsugorodása**
+- A grid elemek `aspect-square` maradnak, de a grid kap egy `max-h` korlátot, hogy kis viewporton a képek kisebbek legyenek
+- A grid wrapper kap `pt-[120px]`-t
+
+**4. Projects oldal**
+- `pt-28` → `pt-[120px]` csere
+- A `height: 75vh` inline style marad, de a `pt` egységes lesz
+
+### Érintett fájlok
+- `src/pages/About.tsx` — top padding hozzáadása, justify eltávolítása
+- `src/pages/Team.tsx` — top padding, képek max méretkorlát
+- `src/pages/Projects.tsx` — pt egységesítés
+- `src/pages/Index.tsx` — pt egységesítés
+
