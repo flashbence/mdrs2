@@ -197,9 +197,9 @@ const Projects = () => {
                   }`}
                 >
                   <td className="px-4 py-2.5 font-normal text-foreground">{p.name}</td>
-                  <td className="px-4 py-2.5 font-normal text-muted-foreground whitespace-nowrap">{p.year}</td>
-                  <td className="px-4 py-2.5 font-normal text-muted-foreground">{p.description[lang]}</td>
-                  {hasStatus && p.status && <td className="px-4 py-2.5 font-normal text-muted-foreground whitespace-nowrap">{p.status[lang]}</td>}
+                  <td className="px-4 py-2.5 font-normal text-foreground">{p.year}</td>
+                  <td className="px-4 py-2.5 font-normal text-foreground">{p.description[lang]}</td>
+                  {hasStatus && p.status && <td className="px-4 py-2.5 font-normal text-foreground whitespace-nowrap">{p.status[lang]}</td>}
                 </tr>
               ))}
             </tbody>
