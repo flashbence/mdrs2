@@ -35,11 +35,11 @@ const Index = () => {
         </div>
 
         {/* Hero building image — shrinks when viewport is short */}
-        <div className="flex justify-center px-[5vw] w-full min-h-0 flex-1 overflow-hidden">
+        <div className="flex justify-center items-end px-[5vw] w-full min-h-0 flex-1">
           <img
             src={heroBuilding}
             alt="Structural engineering 3D model"
-            className="w-full max-w-[1100px] object-cover object-bottom"
+            className="max-h-full max-w-full max-w-[1100px] object-contain object-bottom"
           />
         </div>
       </div>
