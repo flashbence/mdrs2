@@ -32,7 +32,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-[0.8rem] font-light font-['Source_Sans_3'] tracking-wide transition-colors text-[#242424] ${
+              className={`text-[1.1rem] font-light font-['Source_Sans_3'] tracking-wide transition-colors text-[#242424] ${
                 isActive(item.path)
                   ? "underline decoration-[0.5px] underline-offset-4"
                   : ""
