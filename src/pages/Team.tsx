@@ -82,7 +82,7 @@ const Team = () => {
               <div className="aspect-square bg-muted overflow-hidden">
                 <img
                   src={member.img}
-                  alt={member.name}
+                  alt={t(member.nameKey)}
                   className="w-full h-full object-cover"
                 />
               </div>
