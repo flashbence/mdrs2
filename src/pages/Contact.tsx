@@ -18,7 +18,7 @@ const Contact = () => {
           <div className="rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(14px,1.8vw,24px)]">
             {/* Header */}
             <div className="flex flex-col gap-1.5 mb-[clamp(20px,2.5vw,36px)]">
-              <h1 className="text-[clamp(18px,1.7vw,26px)] font-normal tracking-normal font-['Work_Sans'] text-foreground">
+              <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-normal font-['Work_Sans'] text-foreground">
                 {t("contact.glass.title")}
               </h1>
               <p className="text-[clamp(14px,1.1vw,17px)] font-normal text-muted-foreground">
