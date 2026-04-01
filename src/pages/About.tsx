@@ -37,7 +37,7 @@ const About = () => {
         background: 'linear-gradient(to bottom, rgba(181,195,211,0.35) 0%, rgba(181,195,211,0.15) 40%, rgba(255,255,255,0.1) 70%, white 100%)'
       }} />
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-[8vw]">
-        <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-tight text-black mb-8 text-center">
+        <h1 className="text-[clamp(19px,1.84vw,28px)] font-light tracking-tight text-black pb-8 text-center">
           {t("about.title")}
         </h1>
         <div className="space-y-5 text-black leading-relaxed text-[clamp(14px,1.08vw,16px)] font-light text-justify">
@@ -48,7 +48,7 @@ const About = () => {
       </div>
 
       {/* Infinite scrolling image marquee - full width */}
-      <div className="relative z-10 w-full mt-12 overflow-hidden">
+      <div className="relative z-10 w-full pt-12 overflow-hidden">
         <div className="flex w-max animate-marquee will-change-transform">
           {[0, 1].map((group) => (
             <div key={group} className="flex min-w-max shrink-0 gap-6 pr-6">
