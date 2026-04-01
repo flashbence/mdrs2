@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 md:px-12 py-4 bg-transparent z-50 relative">
+      <header className="flex items-center justify-between px-[clamp(40px,6.5vw,120px)] py-4 bg-transparent z-50 relative">
         <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight font-['Work_Sans']">
           <span className="text-foreground">MDRS</span>
           <span className="text-foreground/70">2</span>
