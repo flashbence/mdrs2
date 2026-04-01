@@ -13,7 +13,7 @@ const Contact = () => {
           <div className="rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(16px,2vw,28px)]">
             {/* Header */}
             <div className="flex flex-col gap-2 mb-[clamp(24px,3vw,44px)]">
-              <h1 className="text-[clamp(20px,2vw,30px)] font-normal tracking-normal font-['Space_Grotesk'] text-foreground">
+              <h1 className="text-[clamp(20px,2vw,30px)] font-normal tracking-normal font-['Work_Sans'] text-foreground">
                 {t("contact.glass.title")}
               </h1>
               <p className="text-[clamp(16px,1.3vw,20px)] text-muted-foreground">
