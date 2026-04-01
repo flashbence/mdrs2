@@ -44,7 +44,7 @@ const Team = () => {
         }}
       />
 
-      <div className="w-full relative z-10 px-[clamp(40px,6.5vw,120px)]">
+      <div className="w-full relative z-10 px-[1vw] md:px-[clamp(40px,6.5vw,120px)]">
         {/* Desktop: 5-col grid with gaps, grayscale hover */}
         <div className="hidden md:grid grid-cols-5 gap-[6px] max-h-[calc(100vh-180px)]">
           {desktopTeam.map((member, i) => (
