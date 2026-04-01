@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import molDufi01 from "@/assets/projects/mol-dufi-01.png";
@@ -29,6 +30,28 @@ const projectImages = [
 
 const About = () => {
   const { t } = useLanguage();
+  const [ready, setReady] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const imgs = Array.from(trackRef.current?.querySelectorAll('img') ?? []);
+    Promise.all(
+      imgs.map(img =>
+        img.complete ? Promise.resolve() : new Promise(r => { img.onload = img.onerror = r; })
+      )
+    ).then(() =>
+      requestAnimationFrame(() => requestAnimationFrame(() => setReady(true)))
+    );
+
+    const onVis = () => {
+      if (document.visibilityState === 'visible') {
+        setReady(false);
+        requestAnimationFrame(() => requestAnimationFrame(() => setReady(true)));
+      }
+    };
+    document.addEventListener('visibilitychange', onVis);
+    return () => document.removeEventListener('visibilitychange', onVis);
+  }, []);
 
   return (
     <div className="relative min-h-screen md:h-full flex flex-col items-center bg-white">
@@ -48,8 +71,11 @@ const About = () => {
       </div>
 
       {/* Infinite scrolling image marquee - full width */}
-      <div className="relative z-10 w-full pt-12 overflow-hidden">
-        <div className="flex w-max animate-marquee will-change-transform">
+      <div className="relative z-10 w-full mt-16 overflow-hidden">
+        <div
+          ref={trackRef}
+          className={`flex w-max will-change-transform transition-opacity duration-500 ${ready ? 'animate-marquee opacity-100' : 'opacity-0'}`}
+        >
           {[0, 1].map((group) => (
             <div key={group} className="flex min-w-max shrink-0 gap-6 pr-6">
               {projectImages.map((img, i) => (
