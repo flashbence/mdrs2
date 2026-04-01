@@ -21,7 +21,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       {/* Header */}
-      <header className="flex items-center justify-between px-[clamp(40px,6.5vw,120px)] py-4 bg-transparent z-50 relative">
+      <header className="absolute top-0 left-0 right-0 flex items-center justify-between px-[clamp(40px,6.5vw,120px)] py-4 bg-transparent z-50">
         <Link to="/" className="flex items-center">
           <img src={logoImg} alt="MDRS2 Mérnökiroda" className="h-[30px] md:h-[45px] w-auto" />
         </Link>
