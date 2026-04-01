@@ -1,5 +1,21 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 
+import molDufi01 from "@/assets/projects/mol-dufi-01.jpg";
+import mem01 from "@/assets/projects/mem-01.jpg";
+import lake01 from "@/assets/projects/lake-01.jpg";
+import molDufi02 from "@/assets/projects/mol-dufi-02.jpg";
+import nagymaros01 from "@/assets/projects/nagymaros-01.jpg";
+import kispestiOvi01 from "@/assets/projects/kispesti-ovi-01.jpg";
+import pasaret01 from "@/assets/projects/pasaret-01.jpg";
+import ecseri02 from "@/assets/projects/ecseri-02.jpg";
+import menesi02 from "@/assets/projects/menesi-02.jpg";
+import gizella02 from "@/assets/projects/gizella-02.jpg";
+
+const projectImages = [
+  molDufi01, mem01, lake01, molDufi02, nagymaros01,
+  kispestiOvi01, pasaret01, ecseri02, menesi02, gizella02,
+];
+
 const About = () => {
   const { t } = useLanguage();
 
@@ -19,16 +35,19 @@ const About = () => {
           <p>{t("about.p3")}</p>
         </div>
 
-        {/* Reference images placeholder row */}
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="aspect-[4/3] rounded bg-muted flex items-center justify-center"
-            >
-              <span className="text-xs text-muted-foreground">Projekt {i}</span>
-            </div>
-          ))}
+        {/* Infinite scrolling image marquee */}
+        <div className="mt-10 overflow-hidden">
+          <div className="flex animate-marquee gap-4" style={{ width: 'max-content' }}>
+            {[...projectImages, ...projectImages].map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt={`Project ${(i % projectImages.length) + 1}`}
+                className="h-[140px] w-auto rounded object-contain flex-shrink-0"
+                loading="lazy"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
