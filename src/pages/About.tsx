@@ -31,7 +31,7 @@ const About = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="relative h-full flex flex-col items-center justify-center bg-white">
+    <div className="relative h-full flex flex-col items-center bg-white pt-[120px]">
       {/* Blue gradient from top */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to bottom, rgba(181,195,211,0.35) 0%, rgba(181,195,211,0.15) 40%, rgba(255,255,255,0.1) 70%, white 100%)'
