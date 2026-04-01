@@ -5,14 +5,14 @@ const Contact = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="h-full relative flex items-center justify-center px-4 md:px-8">
+    <div className="relative flex items-center justify-center px-4 md:px-8 md:fixed md:inset-0 md:z-10 pointer-events-none">
       {/* Blue gradient from bottom */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.45) 0%, rgba(181,195,211,0.15) 35%, transparent 65%)'
       }} />
 
       {/* Outer glass card - centered, slightly smaller */}
-      <div className="relative z-10 w-full max-w-[1100px] rounded-[32px] bg-[rgba(86,115,149,0.12)] backdrop-blur-[18px] border border-white/[0.18] shadow-[0_12px_32px_rgba(0,0,0,0.15)] p-[clamp(16px,1.8vw,32px)] box-border">
+      <div className="pointer-events-auto relative z-10 w-full max-w-[1100px] rounded-[32px] bg-[rgba(86,115,149,0.12)] backdrop-blur-[18px] border border-white/[0.18] shadow-[0_12px_32px_rgba(0,0,0,0.15)] p-[clamp(16px,1.8vw,32px)] box-border">
         <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-[clamp(12px,1.5vw,16px)] items-stretch">
           {/* Left - Company info */}
           <div className="rounded-[26px] bg-white/10 border border-white/[0.14] p-[clamp(14px,1.8vw,24px)]">
