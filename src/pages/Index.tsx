@@ -20,7 +20,7 @@ const Index = () => {
       <div className="relative z-10 flex h-full flex-col items-center justify-end pb-0">
         {/* Text content */}
         <div className="px-6 text-center mb-4">
-          <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading">
+          <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading whitespace-nowrap">
             {t("home.title")}
           </h1>
           <p className="text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-xl mx-auto font-body">
