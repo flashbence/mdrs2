@@ -6,7 +6,7 @@ const Index = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="h-full relative flex flex-col items-center justify-center overflow-hidden bg-white">
+    <div className="relative h-screen overflow-hidden bg-white">
       {/* Blue gradient from bottom */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -16,29 +16,32 @@ const Index = () => {
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 text-center mb-4 px-6">
-        <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading">
-          {t("home.title")}
-        </h1>
-        <p className="text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-xl mx-auto font-body">
-          {t("home.subtitle")}
-        </p>
-        <Link
-          to="/about"
-          className="inline-block px-10 py-2.5 rounded-full bg-white/60 backdrop-blur-sm border border-white/40 text-sm font-light text-foreground/80 hover:bg-white/80 transition-all shadow-sm"
-        >
-          {t("home.cta")}
-        </Link>
-      </div>
+      {/* Layout: text + image fill the screen */}
+      <div className="relative z-10 flex h-full flex-col justify-between pt-28">
+        {/* Text content */}
+        <div className="px-6 text-center">
+          <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading">
+            {t("home.title")}
+          </h1>
+          <p className="text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-xl mx-auto font-body">
+            {t("home.subtitle")}
+          </p>
+          <Link
+            to="/about"
+            className="inline-block px-10 py-2.5 rounded-full bg-white/60 backdrop-blur-sm border border-white/40 text-sm font-light text-foreground/80 hover:bg-white/80 transition-all shadow-sm"
+          >
+            {t("home.cta")}
+          </Link>
+        </div>
 
-      {/* Hero building image - clipped at bottom */}
-      <div className="relative z-10 w-full flex justify-center px-[5vw] overflow-hidden max-h-[45vh]">
-        <img
-          src={heroBuilding}
-          alt="Structural engineering 3D model"
-          className="w-full max-w-[1100px] h-auto object-cover object-top"
-        />
+        {/* Hero building image - fills bottom, cropped at viewport edge */}
+        <div className="flex justify-center px-[5vw] mt-auto">
+          <img
+            src={heroBuilding}
+            alt="Structural engineering 3D model"
+            className="w-full max-w-[1100px] h-auto object-contain"
+          />
+        </div>
       </div>
     </div>
   );
