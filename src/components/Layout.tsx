@@ -32,7 +32,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-[1.6rem] font-normal font-['Source_Sans_3'] tracking-wide transition-colors hover:text-primary ${
+              className={`text-[0.9rem] font-light font-['Source_Sans_3'] tracking-wide transition-colors hover:text-primary ${
                 isActive(item.path)
                   ? "text-primary"
                   : "text-muted-foreground"
