@@ -21,9 +21,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="h-screen flex flex-col overflow-hidden">
       {/* Header */}
       <header className="flex items-center justify-between px-6 md:px-12 py-4 bg-card/80 backdrop-blur-sm border-b z-50 relative">
-        <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight font-['Space_Grotesk']">
-          <span className="text-primary">MDRS</span>
-          <span className="text-primary/70">2</span>
+        <Link to="/" className="text-xl md:text-2xl font-bold tracking-tight font-['Work_Sans']">
+          <span className="text-foreground">MDRS</span>
+          <span className="text-foreground/70">2</span>
         </Link>
 
         {/* Desktop nav */}
