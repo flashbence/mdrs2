@@ -1,5 +1,7 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Building2, FileText, Facebook } from "lucide-react";
+import botondImg from "@/assets/team/madaras-botond.jpeg";
+import koppanyImg from "@/assets/team/madaras-koppany.jpeg";
 
 const Contact = () => {
   const { t } = useLanguage();
