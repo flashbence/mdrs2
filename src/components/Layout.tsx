@@ -116,7 +116,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       )}
 
       {/* Page content */}
-      <main className="flex-1 overflow-visible md:overflow-hidden">
+      <main className="flex-1 pt-20 md:pt-0 overflow-visible md:overflow-hidden">
         {children}
       </main>
     </div>
