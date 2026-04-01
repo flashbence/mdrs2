@@ -44,21 +44,20 @@ const About = () => {
           <p>{t("about.p1")}</p>
           <p>{t("about.p2")}</p>
           <p>{t("about.p3")}</p>
-        </div>
+      </div>
 
-        {/* Infinite scrolling image marquee */}
-        <div className="mt-10 overflow-hidden">
-          <div className="flex animate-marquee gap-4" style={{ width: 'max-content' }}>
-            {[...projectImages, ...projectImages].map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt={`Project ${(i % projectImages.length) + 1}`}
-                className="h-[140px] w-auto rounded object-contain flex-shrink-0"
-                loading="lazy"
-              />
-            ))}
-          </div>
+      {/* Infinite scrolling image marquee - full width */}
+      <div className="relative z-10 w-full mt-12 overflow-hidden">
+        <div className="flex animate-marquee gap-6" style={{ width: 'max-content' }}>
+          {[...projectImages, ...projectImages].map((img, i) => (
+            <img
+              key={i}
+              src={img}
+              alt={`Project ${(i % projectImages.length) + 1}`}
+              className="h-[350px] w-auto object-contain flex-shrink-0"
+              loading="lazy"
+            />
+          ))}
         </div>
       </div>
     </div>
