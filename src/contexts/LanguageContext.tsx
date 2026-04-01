@@ -68,9 +68,9 @@ const translations: Record<Language, Record<string, string>> = {
     "home.cta": "Learn More",
     // About
     "about.title": "About Us",
-    "about.p1": "MDRS2 Engineering Office specializes in structural design and consulting. Our office has gained experience in almost every area of the construction industry over the past years.",
-    "about.p2": "Our design activities cover the complex design of reinforced concrete, steel, timber and glass structures, from foundations to roof structures. We undertake tasks from conceptual design to detailed construction plans.",
-    "about.p3": "As part of our consulting activities, we perform building diagnostics, condition assessments and structural reviews. Our goal is to develop reliable, economical and aesthetically pleasing structural solutions.",
+    "about.p1": "In 2018, with 20 years of structural engineering and consulting experience, we founded mdrs2 Mérnöki Szolgáltató Kft., specializing in general structural design and consulting, primarily in building construction and civil engineering. Our core profile is general structural design, with professional activities covering reinforced concrete, steel, timber and masonry structures and buildings.",
+    "about.p2": "We carry out our design tasks from conceptual foundations to construction and as-built documentation phases. Our portfolio includes new buildings, renovations, refurbishments, and heritage rehabilitation projects alike. Our goal is to find and design technically optimal, economical solutions, whether for smaller or larger residential buildings, public buildings, industrial structures, or special engineering structures. We closely follow new technologies, future solutions and materials alike. Our consulting tasks span from general structural condition assessments to the analysis or design of special interventions and reinforcements across professional fields.",
+    "about.p3": "Our organically growing office is a proud partner of numerous architectural firms and construction companies, and our continuously developed professional competencies provide a foundation for meeting future engineering challenges and designing the buildings and structures of tomorrow! We hold the necessary professional chamber qualifications: T, SZÉS-1, VZ-TER, VZ-TEL.",
     // Team
     "team.title": "Our Team",
     "team.placeholder.role": "Structural Engineer",
