@@ -59,7 +59,7 @@ const Team = () => {
               <div className="aspect-square bg-muted overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 relative">
                 <img
                   src={member.img}
-                  alt={member.name}
+                  alt={t(member.nameKey)}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-[clamp(8px,1vw,16px)] pt-[clamp(40px,4vw,70px)]">
