@@ -5,7 +5,7 @@ const Contact = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="h-full relative flex items-center justify-center px-4 md:px-8 contact-page">
+    <div className="h-full relative flex items-center justify-center px-4 md:px-8">
       {/* Blue gradient from bottom */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.45) 0%, rgba(181,195,211,0.15) 35%, transparent 65%)'

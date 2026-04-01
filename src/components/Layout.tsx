@@ -43,31 +43,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-0">
+        <div className="flex items-center gap-1">
+          {/* Language switcher - two separate buttons */}
           <button
             onClick={() => setLang("en")}
-            className="inline-block uppercase select-none transition-colors"
-            style={{
-              lineHeight: '36px',
-              height: '36px',
-              paddingRight: '10px',
-              fontSize: '14px',
-              fontFamily: 'Arial',
-              color: lang === "en" ? 'rgb(0,0,0)' : 'rgb(160,160,160)',
-            }}
+            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
+              lang === "en" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
           >
             EN
           </button>
           <button
             onClick={() => setLang("hu")}
-            className="inline-block uppercase select-none transition-colors"
-            style={{
-              lineHeight: '36px',
-              height: '36px',
-              fontSize: '14px',
-              fontFamily: 'Arial',
-              color: lang === "hu" ? 'rgb(0,0,0)' : 'rgb(160,160,160)',
-            }}
+            className={`text-xs font-medium tracking-wide px-2 py-1 transition-colors ${
+              lang === "hu" ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
           >
             HU
           </button>
