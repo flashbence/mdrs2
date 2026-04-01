@@ -75,16 +75,16 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Mobile fullscreen menu overlay */}
       {menuOpen && (
         <div className="fixed inset-0 bg-white z-40 md:hidden flex flex-col items-center justify-center">
-          <nav className="flex flex-col items-center gap-8">
+          <nav className="flex flex-col items-center gap-5">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 onClick={() => setMenuOpen(false)}
-                className={`text-[2rem] font-light font-['Work_Sans'] tracking-wide transition-colors ${
+                className={`text-[1.55rem] font-light font-['Work_Sans'] tracking-wide transition-colors ${
                   isActive(item.path)
                     ? "text-[#242424] underline decoration-[0.5px] underline-offset-8"
-                    : "text-[#242424]/70"
+                    : "text-[#242424]/60"
                 }`}
               >
                 {item.label}
