@@ -35,12 +35,14 @@ const translations: Record<Language, Record<string, string>> = {
     "projects.category.public": "Közintézmény",
     // Contact
     "contact.title": "Kapcsolat",
-    "contact.address.label": "Cím",
-    "contact.phone.label": "Telefon",
-    "contact.email.label": "Email",
-    "contact.address": "1234 Budapest, Példa utca 1.",
-    "contact.phone": "+36 1 234 5678",
-    "contact.email": "info@mdrs2.hu",
+    "contact.glass.title": "Lépjen velünk kapcsolatba",
+    "contact.glass.subtitle": "Céges elérhetőségek és adatok",
+    "contact.office": "Iroda: 1118 Budapest, Budaörsi út 131/b.",
+    "contact.hq": "Székhely: 1156 Budapest, Páskomliget utca 62. II/12.",
+    "contact.taxnum": "Adószám",
+    "contact.regnum": "Cégjegyzékszám",
+    "contact.follow": "Kövessen minket:",
+    "contact.onFacebook": "a Facebookon",
   },
   en: {
     // Nav
