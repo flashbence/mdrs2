@@ -48,7 +48,7 @@ const About = () => {
       </div>
 
       {/* Infinite scrolling image marquee - full width */}
-      <div className="relative z-10 w-full mt-12 overflow-hidden">
+      <div className="relative z-10 w-full pt-12 overflow-hidden">
         <div className="flex w-max animate-marquee will-change-transform">
           {[0, 1].map((group) => (
             <div key={group} className="flex min-w-max shrink-0 gap-6 pr-6">
