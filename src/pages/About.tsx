@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import molDufi01 from "@/assets/projects/mol-dufi-01.png";
