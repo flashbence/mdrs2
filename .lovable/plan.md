@@ -1,21 +1,30 @@
 
 
-## Marquee sebesség javítása
+## Marquee lassú betöltés javítása
 
 ### Probléma
-A Tailwind `animate-marquee` class csak az animáció nevét és időzítést állítja be CSS-ben, de a böngésző nem mindig alkalmazza helyesen a `180s` értéket, mert a Tailwind-generált class és a `transition-opacity` class ütközhet, vagy a generált CSS specificitása nem elég.
+A `ready` state `false`-ként indul, és csak akkor vált `true`-ra, amikor mind a **19 kép** betöltődött (`Promise.all` az összes `img.onload`-ra vár). Ez 5-6 másodperces késleltetést okoz, amíg az összes kép letöltődik — addig a marquee `opacity-0`.
 
 ### Megoldás
 
-**`src/pages/About.tsx`** — 77. sor: Az `animate-marquee` mellé inline arbitrary properties-ként kényszerítjük a duration-t:
+Egyszerűsítés: a `ready` gate-et és az egész `useEffect`-et **töröljük**. A marquee azonnal megjelenik az animációval, a képek pedig progresszíven töltődnek be. Nincs szükség arra, hogy megvárjuk az összeset.
 
-```
-className={`flex w-max will-change-transform transition-opacity duration-500 ${ready ? 'animate-marquee [animation-duration:180s] opacity-100' : 'opacity-0'}`}
+**`src/pages/About.tsx`**:
+
+1. Töröljük a `useState(false)`, `useRef`, és az egész `useEffect` blokkot (33–54. sor)
+2. A marquee div className-ből eltávolítjuk a feltételes logikát:
+
+```tsx
+<div
+  className="flex w-max will-change-transform animate-marquee opacity-100"
+  style={{ animationDuration: '180s' }}
+>
 ```
 
-Ez a `[animation-duration:180s]` Tailwind arbitrary property közvetlenül az elemre írja a duration-t, felülírva bármilyen ütközést.
+3. A `ref={trackRef}` is törlődik a div-ről.
 
 ### Hatás
-- A marquee 180 másodperc alatt tesz meg egy teljes kört — lassú, nyugodt scrollozás
-- Mobil és desktop egyaránt érintett, mindkettőn lassabb lesz
+- A marquee **azonnal elindul** az oldal renderelésével — nem kell 5-6 mp-et várni
+- A képek progresszíven jelennek meg ahogy betöltődnek (ez természetes viselkedés)
+- Desktop és mobil egyaránt érintett, mindkettőn gyorsabb lesz
 
