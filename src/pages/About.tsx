@@ -75,6 +75,7 @@ const About = () => {
         <div
           ref={trackRef}
           className={`flex w-max will-change-transform transition-opacity duration-500 ${ready ? 'animate-marquee opacity-100' : 'opacity-0'}`}
+          style={ready ? { animationDuration: '180s' } : undefined}
         >
           {[0, 1].map((group) => (
             <div key={group} className="flex min-w-max shrink-0 gap-6 pr-6">
