@@ -1,25 +1,21 @@
 
 
-## Nav bar alatti hely kiterjesztése 767px-ig
+## Marquee sebesség javítása
 
 ### Probléma
-Néhány oldal túl korán szünteti meg a mobil felső paddinget — a Contact oldalon `sm:pt-0` (640px-től), így 640–767px között a tartalom belóg a navbar alá.
+A Tailwind `animate-marquee` class csak az animáció nevét és időzítést állítja be CSS-ben, de a böngésző nem mindig alkalmazza helyesen a `180s` értéket, mert a Tailwind-generált class és a `transition-opacity` class ütközhet, vagy a generált CSS specificitása nem elég.
 
-### Változtatások
+### Megoldás
 
-**`src/pages/Contact.tsx`** (10. sor):
-- `pt-20 sm:pt-0` → `pt-20 md:pt-0`
-- Így a felső padding 767px-ig megmarad, és csak 768px-től (desktop) szűnik meg.
+**`src/pages/About.tsx`** — 77. sor: Az `animate-marquee` mellé inline arbitrary properties-ként kényszerítjük a duration-t:
 
-**Többi oldal ellenőrzése:**
-- **Team**: `pt-20 md:pt-0` — már jó
-- **About**: `pt-[120px]` mindig — jó
-- **Projects**: `pt-20 sm:pt-[120px]` — a padding megmarad, csak mérete változik, jó
-- **Index**: `pt-[120px]` mindig — jó
+```
+className={`flex w-max will-change-transform transition-opacity duration-500 ${ready ? 'animate-marquee [animation-duration:180s] opacity-100' : 'opacity-0'}`}
+```
 
-Tehát csak a **Contact** oldalt kell javítani.
+Ez a `[animation-duration:180s]` Tailwind arbitrary property közvetlenül az elemre írja a duration-t, felülírva bármilyen ütközést.
 
 ### Hatás
-- **Mobil/tablet (< 768px)**: A contact oldal tartalma nem lóg be a navbar alá
-- **Desktop (≥ 768px)**: Változatlan, a centered layout kezeli a pozícionálást
+- A marquee 180 másodperc alatt tesz meg egy teljes kört — lassú, nyugodt scrollozás
+- Mobil és desktop egyaránt érintett, mindkettőn lassabb lesz
 
