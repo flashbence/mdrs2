@@ -1,30 +1,38 @@
 
 
-## Marquee lassú betöltés javítása
+## Betűméretek egységesítése
 
-### Probléma
-A `ready` state `false`-ként indul, és csak akkor vált `true`-ra, amikor mind a **19 kép** betöltődött (`Promise.all` az összes `img.onload`-ra vár). Ez 5-6 másodperces késleltetést okoz, amíg az összes kép letöltődik — addig a marquee `opacity-0`.
+### Jelenlegi állapot
 
-### Megoldás
+| Elem | About | Contact | Projects |
+|------|-------|---------|----------|
+| **Címsor (h1/h2)** | `clamp(1.1875rem,1.84vw,28px)` | `clamp(1.1875rem,1.84vw,28px)` | — |
+| **Body szöveg** | `clamp(0.875rem,1.08vw,16px)` | `clamp(0.875rem,1.08vw,16px)` | vegyes (`0.89em`, `0.95em`, `0.86rem`, `0.82rem`) |
+| **Alcím** | — | `clamp(0.9375rem,1.19vw,18px)` | — |
+| **Táblázat fejléc** | — | — | `0.89rem` fix |
+| **Táblázat body** | — | — | `clamp(0.8125rem,1.08vw,15px)` |
+| **Tab gombok** | — | — | `0.75rem` / `1.1rem` |
+| **Leírás** | — | — | `0.89em` / `0.95em` |
+| **Mobil kártyák** | — | — | `0.86rem`, `0.82rem` |
 
-Egyszerűsítés: a `ready` gate-et és az egész `useEffect`-et **töröljük**. A marquee azonnal megjelenik az animációval, a képek pedig progresszíven töltődnek be. Nincs szükség arra, hogy megvárjuk az összeset.
+A Contact és About már egységes. A **Projects** oldal használ vegyes `rem`/`em` értékeket, amik eltérnek a többi oldaltól.
 
-**`src/pages/About.tsx`**:
+### Terv
 
-1. Töröljük a `useState(false)`, `useRef`, és az egész `useEffect` blokkot (33–54. sor)
-2. A marquee div className-ből eltávolítjuk a feltételes logikát:
+Egységesítjük a Projects oldalt a többi oldal mintájára, `clamp()` alapú méretezéssel:
 
-```tsx
-<div
-  className="flex w-max will-change-transform animate-marquee opacity-100"
-  style={{ animationDuration: '180s' }}
->
-```
+**`src/pages/Projects.tsx`**:
 
-3. A `ref={trackRef}` is törlődik a div-ről.
+1. **Tab gombok** (164. sor): `text-[0.75rem] sm:text-[1.1rem]` → `text-[clamp(0.875rem,1.08vw,16px)]`
+2. **Leírás** (177. sor): `text-[0.89em] sm:text-[0.95em]` → `text-[clamp(0.875rem,1.08vw,16px)]`
+3. **Táblázat fejléc** (187-190. sor): `text-[0.89rem]` → `text-[clamp(0.875rem,1.08vw,16px)]`
+4. **Táblázat body** (184. sor): `text-[clamp(0.8125rem,1.08vw,15px)]` → `text-[clamp(0.875rem,1.08vw,16px)]`
+5. **Mobil kártyák** (217. sor): `text-[0.86rem]` → `text-[clamp(0.875rem,1.08vw,16px)]`
+6. **Mobil év/státusz** (225, 227. sor): `text-[0.82rem]` → `text-[clamp(0.8125rem,1vw,14px)]` (kisebb, de clamp-alapú)
 
-### Hatás
-- A marquee **azonnal elindul** az oldal renderelésével — nem kell 5-6 mp-et várni
-- A képek progresszíven jelennek meg ahogy betöltődnek (ez természetes viselkedés)
-- Desktop és mobil egyaránt érintett, mindkettőn gyorsabb lesz
+### Eredmény
+Minden oldalon azonos `clamp()` rendszer:
+- Címsorok: `clamp(1.1875rem, 1.84vw, 28px)`
+- Body/általános szöveg: `clamp(0.875rem, 1.08vw, 16px)`
+- Kisebb szöveg (év, státusz): `clamp(0.8125rem, 1vw, 14px)`
 
