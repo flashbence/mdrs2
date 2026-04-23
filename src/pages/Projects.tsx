@@ -184,10 +184,10 @@ const Projects = () => {
           <table className="w-full text-left text-[clamp(1rem,1.08vw,18px)]">
             <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
-                <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[0]}</th>
-                <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[1]}</th>
-                <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[2]}</th>
-                {hasStatus && <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[3]}</th>}
+                <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[0]}</th>
+                <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[1]}</th>
+                <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[2]}</th>
+                {hasStatus && <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[3]}</th>}
               </tr>
             </thead>
             <tbody>
@@ -214,7 +214,7 @@ const Projects = () => {
           {currentProjects.map((p, i) => (
             <div
               key={i}
-              className="grid gap-x-3 gap-y-2 p-3 bg-white/10 border border-white/[0.14] rounded-[14px] relative text-[clamp(0.875rem,1.08vw,16px)] text-black"
+              className="grid gap-x-3 gap-y-2 p-3 bg-white/10 border border-white/[0.14] rounded-[14px] relative text-[clamp(1rem,1.08vw,18px)] text-black"
               style={{ gridTemplateColumns: hasStatus ? '0.7fr 1.3fr' : '1fr' }}
             >
               {/* Row 1: Project name - full width */}

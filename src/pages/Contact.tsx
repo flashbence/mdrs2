@@ -93,7 +93,7 @@ const Contact = () => {
                   <img src={botondImg} alt={t("team.name.botond")} className="w-full h-full object-cover grayscale" />
                 </div>
               </div>
-              <div className="space-y-0.5 text-[clamp(0.875rem,1.08vw,16px)] font-light text-foreground">
+              <div className="space-y-0.5 text-[clamp(1rem,1.08vw,18px)] font-light text-foreground">
                 <a href="mailto:madaras.botond@mdrs2.hu" className="block font-light hover:opacity-80 transition-opacity">
                   madaras.botond@mdrs2.hu
                 </a>
@@ -113,7 +113,7 @@ const Contact = () => {
                   <img src={koppanyImg} alt={t("team.name.koppany")} className="w-full h-full object-cover grayscale" />
                 </div>
               </div>
-              <div className="space-y-0.5 text-[clamp(0.875rem,1.08vw,16px)] font-light text-foreground">
+              <div className="space-y-0.5 text-[clamp(1rem,1.08vw,18px)] font-light text-foreground">
                 <a href="mailto:madaras.koppany@mdrs2.hu" className="block font-light hover:opacity-80 transition-opacity">
                   madaras.koppany@mdrs2.hu
                 </a>
