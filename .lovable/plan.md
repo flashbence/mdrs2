@@ -1,102 +1,111 @@
 
-## Projects oldal: dinamikus desktop lista-magasság
+## About oldal képcsúszka: induljon az első 5-6 képpel
 
 ### Cél
 
-A Projects oldalon desktop nézetben ne legyen feleslegesen nagy üres tér a lista után, hanem a táblázat magassága igazodjon az aktuális képernyőmagassághoz.
+Igen, meg tudjuk csinálni: az `/about` oldali képcsúszka ne várjon minden képre, hanem az első látható 5-6 képet töltse be prioritással, ezek után induljon el az animáció stabil sebességgel.
 
-Fontos feltétel: a felső menüsor alatt és a Projects tartalom kezdete között mindig fix távolság maradjon.
+Így a felhasználó gyorsabban lát működő csúszkát, miközben a többi kép csak utána töltődik be a háttérben.
 
-### Megoldás
+### Miért jobb ez?
 
-A jelenlegi fix `max-h-[500px]` táblázatmagasságot lecserélem egy rugalmas, képernyőmagassághoz igazodó elrendezésre.
+Most a probléma valószínűleg az, hogy:
 
-A Projects oldal desktopon így fog működni:
+- 19 kép van,
+- ezek duplázva jelennek meg az infinite marquee miatt,
+- tehát a böngésző egyszerre sok képet próbál letölteni / dekódolni,
+- az animáció már akkor elindul, amikor a képek mérete és szélessége még nem stabil,
+- ezért az első betöltésnél villogás, lassulás, layout-újraszámolás történik,
+- frissítés után pedig azért jó, mert a képek már cache-ben vannak.
 
-```text
-képernyő teteje
-│
-├─ fejléc / főmenü
-│
-├─ fix távolság
-│
-├─ projekt kategória gombok
-├─ kategória leírás
-├─ táblázat
-│  └─ a maradék desktop magasságot használja
-│     ha több sor van, belül scrollozik
-│
-└─ fix alsó margó
-```
+### Tervezett megoldás
 
-### Konkrét módosítások
+A `src/pages/About.tsx` fájlban átalakítom a képcsúszkát úgy, hogy:
 
-#### 1. Projects oldal fő konténerének rendezése
+1. **Az első 6 képet külön prioritással kezeljük**
+   - ezek `loading="eager"` értéket kapnak,
+   - `fetchPriority="high"` értéket kapnak,
+   - `decoding="async"` marad, hogy ne blokkolja a teljes oldalt.
 
-A `src/pages/Projects.tsx` desktop layoutját úgy állítom át, hogy:
+2. **Az animáció kezdetben szünetel**
+   - a marquee nem indul el azonnal,
+   - csak akkor indul, amikor az első 6 kép betöltődött.
 
-- desktopon `h-full` / `min-h-0` alapú legyen,
-- a belső tartalom teljes rendelkezésre álló magassággal számoljon,
-- mobilon a mostani kártyás, természetesen görgethető működés megmaradjon.
+3. **A többi kép később töltődik**
+   - az első látható képek után a többi kép alacsonyabb prioritással tölt be,
+   - így nem terheli egyszerre a böngészőt.
 
-#### 2. Fix felső térköz megtartása
+4. **A képek helyét stabilizáljuk**
+   - fix, kiszámítható képdobozokat adunk a csúszkában,
+   - így a marquee szélessége nem ugrál betöltés közben,
+   - ez csökkenti a villogást és a sebességváltozást.
 
-A jelenlegi felső pozícionálást nem hagyom össze-vissza skálázódni.
+5. **Az animáció sebessége marad kontrollált**
+   - a jelenlegi `180s` animációs idő megtartható,
+   - ha a stabilizálás után még túl lassúnak érződik első betöltéskor, finoman lehet rövidíteni például `150s` környékére.
 
-Desktopon fix érték marad például:
+### Technikai részletek
 
-```tsx
-md:pt-[120px]
-```
-
-Így a főmenü és a Projects tartalom kezdete közötti távolság mindig stabil marad.
-
-#### 3. A táblázat magasságának dinamikussá tétele
-
-A mostani rész:
+A megoldás kb. ilyen logikát kap:
 
 ```tsx
-<div className="max-h-[500px] overflow-y-auto">
+const INITIAL_VISIBLE_IMAGE_COUNT = 6;
+const [canStartMarquee, setCanStartMarquee] = useState(false);
+const loadedInitialImages = useRef(new Set<number>());
+
+const handleInitialImageLoad = (index: number) => {
+  if (index >= INITIAL_VISIBLE_IMAGE_COUNT) return;
+
+  loadedInitialImages.current.add(index);
+
+  if (loadedInitialImages.current.size >= INITIAL_VISIBLE_IMAGE_COUNT) {
+    setCanStartMarquee(true);
+  }
+};
 ```
 
-helyett rugalmas megoldás lesz:
+Majd az animáció:
 
 ```tsx
-<div className="flex-1 min-h-0 overflow-y-auto">
+style={{
+  animationDuration: "180s",
+  animationPlayState: canStartMarquee ? "running" : "paused",
+}}
 ```
 
-Ehhez a szülő konténerek is `flex flex-col min-h-0` struktúrát kapnak, hogy a táblázat pontosan a maradék képernyőmagasságot használja.
-
-#### 4. Tabs és leírás fix magasságú blokkok maradnak
-
-A kategória gombok és a leírás nem nyúlnak, nem ugrálnak:
+A képeknél:
 
 ```tsx
-<div className="shrink-0">tabs</div>
-<div className="shrink-0">description</div>
+<img
+  src={img}
+  loading={i < 6 ? "eager" : "lazy"}
+  fetchPriority={i < 6 ? "high" : "auto"}
+  decoding="async"
+  onLoad={() => handleInitialImageLoad(i)}
+/>
 ```
 
-A táblázat kapja meg a fennmaradó helyet.
+És a képhelyeket stabilizáljuk például egy fix méretű wrapperrel:
 
-#### 5. Mobil nézet változatlan marad
+```tsx
+<div className="h-[clamp(130px,13vw,200px)] w-[clamp(200px,20vw,320px)] shrink-0 flex items-center justify-center">
+  <img className="max-h-full max-w-full object-contain" />
+</div>
+```
 
-A mobil layout:
+### Fontos megjegyzés
 
-- továbbra is kártyás marad,
-- nem kap desktopos belső scrollt,
-- a teljes oldal természetesen görgethető marad.
-
-### Várható eredmény
-
-Desktopon:
-
-- nagyobb kijelzőn több projekt-sor látszik egyszerre,
-- kisebb laptopon kevesebb sor látszik, de a táblázat belül scrollozható,
-- megszűnik a felesleges nagy whitespace a táblázat után,
-- a felső menüsor és a Projects tartalom kezdete közötti távolság fix marad,
-- a mobil nézet nem változik.
+Nem az összes képet kell megvárni, csak az első látható 5-6 képet.  
+Ez gyorsabb indítást ad, de közben mégis stabilabb lesz, mert az animáció már nem teljesen vakon indul el.
 
 ### Érintett fájl
 
-- `src/pages/Projects.tsx`
+- `src/pages/About.tsx`
 
+### Várható eredmény
+
+- Az `/about` oldalon a képcsúszka nem villogva indul.
+- Az első 5-6 kép gyorsabban és stabilabban jelenik meg.
+- Az animáció csak akkor indul el, amikor ezek már rendelkezésre állnak.
+- A többi kép háttérben töltődik tovább.
+- Frissítés nélkül is közelebb lesz ahhoz az állapothoz, amit most csak reload után látsz.
