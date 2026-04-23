@@ -148,15 +148,15 @@ const Projects = () => {
 
   return (
     <div
-      className="min-h-screen md:h-full relative flex flex-col items-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden"
+      className="min-h-screen md:h-full md:min-h-0 relative flex flex-col items-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden"
       style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.5) 0%, rgba(181,195,211,0.25) 30%, rgba(181,195,211,0.1) 55%, white 75%)'
       }}
     >
 
-      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-20 sm:pt-[120px] pb-6 sm:pb-0" style={{ height: undefined }}>
+      <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-20 sm:pt-[120px] pb-6 md:h-full md:min-h-0 md:pb-6">
         {/* Tabs */}
-        <div className="flex flex-wrap gap-2 mb-0">
+        <div className="flex flex-wrap gap-2 mb-0 shrink-0">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -174,13 +174,13 @@ const Projects = () => {
         </div>
 
         {/* Description */}
-        <div className="my-4 leading-[1.45] text-[clamp(1rem,1.08vw,18px)] font-normal text-foreground">
+        <div className="my-4 leading-[1.45] text-[clamp(1rem,1.08vw,18px)] font-normal text-foreground shrink-0">
           {descriptions[lang][active]}
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden sm:block w-full rounded-[14px] overflow-hidden">
-          <div className="max-h-[500px] overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
+        <div className="hidden sm:block w-full rounded-[14px] overflow-hidden md:flex-1 md:min-h-0">
+          <div className="max-h-[500px] md:h-full md:max-h-none overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
           <table className="w-full text-left text-[clamp(1rem,1.08vw,18px)]">
             <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
