@@ -161,7 +161,7 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`px-[14px] py-[6px] sm:px-6 sm:py-2 rounded-[11px] text-[clamp(0.875rem,1.08vw,16px)] font-light font-['Work_Sans'] tracking-wide cursor-pointer transition-all duration-200
+              className={`px-[14px] py-[6px] sm:px-6 sm:py-2 rounded-[11px] text-[clamp(1rem,1.08vw,18px)] font-light font-['Work_Sans'] tracking-wide cursor-pointer transition-all duration-200
                 backdrop-blur-[18px] border whitespace-nowrap
                 ${active === cat
                   ? "bg-[#567395] text-white border-[#111] shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
@@ -174,14 +174,14 @@ const Projects = () => {
         </div>
 
         {/* Description */}
-        <div className="my-4 leading-[1.45] text-[clamp(0.875rem,1.08vw,16px)] font-normal text-foreground">
+        <div className="my-4 leading-[1.45] text-[clamp(1rem,1.08vw,18px)] font-normal text-foreground">
           {descriptions[lang][active]}
         </div>
 
         {/* Desktop Table */}
         <div className="hidden sm:block w-full rounded-[14px] overflow-hidden">
           <div className="max-h-[500px] overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
-          <table className="w-full text-left text-[clamp(0.875rem,1.08vw,16px)]">
+          <table className="w-full text-left text-[clamp(1rem,1.08vw,18px)]">
             <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
                 <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[0]}</th>
