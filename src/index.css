@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (max-width: 767px) {
-  html { font-size: 117%; }
-}
-
 @media (min-width: 768px) {
   html, body, #root {
     height: 100%;
