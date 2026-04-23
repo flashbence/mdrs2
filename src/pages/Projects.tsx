@@ -161,7 +161,7 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setActive(cat)}
-              className={`px-[14px] py-[6px] sm:px-6 sm:py-2 rounded-[11px] text-[clamp(0.875rem,1.08vw,16px)] font-light font-['Work_Sans'] tracking-wide cursor-pointer transition-all duration-200
+              className={`px-[14px] py-[6px] sm:px-6 sm:py-2 rounded-[11px] text-[clamp(1rem,1.08vw,18px)] font-light font-['Work_Sans'] tracking-wide cursor-pointer transition-all duration-200
                 backdrop-blur-[18px] border whitespace-nowrap
                 ${active === cat
                   ? "bg-[#567395] text-white border-[#111] shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
@@ -174,20 +174,20 @@ const Projects = () => {
         </div>
 
         {/* Description */}
-        <div className="my-4 leading-[1.45] text-[clamp(0.875rem,1.08vw,16px)] font-normal text-foreground">
+        <div className="my-4 leading-[1.45] text-[clamp(1rem,1.08vw,18px)] font-normal text-foreground">
           {descriptions[lang][active]}
         </div>
 
         {/* Desktop Table */}
         <div className="hidden sm:block w-full rounded-[14px] overflow-hidden">
           <div className="max-h-[500px] overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' as any }}>
-          <table className="w-full text-left text-[clamp(0.875rem,1.08vw,16px)]">
+          <table className="w-full text-left text-[clamp(1rem,1.08vw,18px)]">
             <thead className="sticky top-0 z-[3]">
               <tr className="bg-white/[0.92] backdrop-blur-sm uppercase border-b border-black/15">
-                <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[0]}</th>
-                <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[1]}</th>
-                <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[2]}</th>
-                {hasStatus && <th className="px-3 py-2.5 font-medium text-black text-[clamp(0.875rem,1.08vw,16px)] tracking-[0.05em] whitespace-nowrap">{headers[3]}</th>}
+                <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[0]}</th>
+                <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[1]}</th>
+                <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[2]}</th>
+                {hasStatus && <th className="px-3 py-2.5 font-medium text-black text-[clamp(1rem,1.08vw,18px)] tracking-[0.05em] whitespace-nowrap">{headers[3]}</th>}
               </tr>
             </thead>
             <tbody>
@@ -214,7 +214,7 @@ const Projects = () => {
           {currentProjects.map((p, i) => (
             <div
               key={i}
-              className="grid gap-x-3 gap-y-2 p-3 bg-white/10 border border-white/[0.14] rounded-[14px] relative text-[clamp(0.875rem,1.08vw,16px)] text-black"
+              className="grid gap-x-3 gap-y-2 p-3 bg-white/10 border border-white/[0.14] rounded-[14px] relative text-[clamp(1rem,1.08vw,18px)] text-black"
               style={{ gridTemplateColumns: hasStatus ? '0.7fr 1.3fr' : '1fr' }}
             >
               {/* Row 1: Project name - full width */}
@@ -222,9 +222,9 @@ const Projects = () => {
               {/* Row 2: Description - full width */}
               <div className="col-span-full opacity-95">{p.description[lang]}</div>
               {/* Row 3: Year (left) + Status (right) */}
-              <div className="text-[clamp(0.8125rem,1vw,14px)] opacity-90">{p.year}</div>
+              <div className="text-[clamp(1rem,1vw,16px)] opacity-90">{p.year}</div>
               {hasStatus && p.status && (
-                <div className="text-[clamp(0.8125rem,1vw,14px)] opacity-90 text-right">{p.status[lang]}</div>
+                <div className="text-[clamp(1rem,1vw,16px)] opacity-90 text-right">{p.status[lang]}</div>
               )}
             </div>
           ))}
