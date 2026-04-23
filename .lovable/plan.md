@@ -1,38 +1,102 @@
 
+## Projects oldal: dinamikus desktop lista-magasság
 
-## Betűméretek egységesítése
+### Cél
 
-### Jelenlegi állapot
+A Projects oldalon desktop nézetben ne legyen feleslegesen nagy üres tér a lista után, hanem a táblázat magassága igazodjon az aktuális képernyőmagassághoz.
 
-| Elem | About | Contact | Projects |
-|------|-------|---------|----------|
-| **Címsor (h1/h2)** | `clamp(1.1875rem,1.84vw,28px)` | `clamp(1.1875rem,1.84vw,28px)` | — |
-| **Body szöveg** | `clamp(0.875rem,1.08vw,16px)` | `clamp(0.875rem,1.08vw,16px)` | vegyes (`0.89em`, `0.95em`, `0.86rem`, `0.82rem`) |
-| **Alcím** | — | `clamp(0.9375rem,1.19vw,18px)` | — |
-| **Táblázat fejléc** | — | — | `0.89rem` fix |
-| **Táblázat body** | — | — | `clamp(0.8125rem,1.08vw,15px)` |
-| **Tab gombok** | — | — | `0.75rem` / `1.1rem` |
-| **Leírás** | — | — | `0.89em` / `0.95em` |
-| **Mobil kártyák** | — | — | `0.86rem`, `0.82rem` |
+Fontos feltétel: a felső menüsor alatt és a Projects tartalom kezdete között mindig fix távolság maradjon.
 
-A Contact és About már egységes. A **Projects** oldal használ vegyes `rem`/`em` értékeket, amik eltérnek a többi oldaltól.
+### Megoldás
 
-### Terv
+A jelenlegi fix `max-h-[500px]` táblázatmagasságot lecserélem egy rugalmas, képernyőmagassághoz igazodó elrendezésre.
 
-Egységesítjük a Projects oldalt a többi oldal mintájára, `clamp()` alapú méretezéssel:
+A Projects oldal desktopon így fog működni:
 
-**`src/pages/Projects.tsx`**:
+```text
+képernyő teteje
+│
+├─ fejléc / főmenü
+│
+├─ fix távolság
+│
+├─ projekt kategória gombok
+├─ kategória leírás
+├─ táblázat
+│  └─ a maradék desktop magasságot használja
+│     ha több sor van, belül scrollozik
+│
+└─ fix alsó margó
+```
 
-1. **Tab gombok** (164. sor): `text-[0.75rem] sm:text-[1.1rem]` → `text-[clamp(0.875rem,1.08vw,16px)]`
-2. **Leírás** (177. sor): `text-[0.89em] sm:text-[0.95em]` → `text-[clamp(0.875rem,1.08vw,16px)]`
-3. **Táblázat fejléc** (187-190. sor): `text-[0.89rem]` → `text-[clamp(0.875rem,1.08vw,16px)]`
-4. **Táblázat body** (184. sor): `text-[clamp(0.8125rem,1.08vw,15px)]` → `text-[clamp(0.875rem,1.08vw,16px)]`
-5. **Mobil kártyák** (217. sor): `text-[0.86rem]` → `text-[clamp(0.875rem,1.08vw,16px)]`
-6. **Mobil év/státusz** (225, 227. sor): `text-[0.82rem]` → `text-[clamp(0.8125rem,1vw,14px)]` (kisebb, de clamp-alapú)
+### Konkrét módosítások
 
-### Eredmény
-Minden oldalon azonos `clamp()` rendszer:
-- Címsorok: `clamp(1.1875rem, 1.84vw, 28px)`
-- Body/általános szöveg: `clamp(0.875rem, 1.08vw, 16px)`
-- Kisebb szöveg (év, státusz): `clamp(0.8125rem, 1vw, 14px)`
+#### 1. Projects oldal fő konténerének rendezése
+
+A `src/pages/Projects.tsx` desktop layoutját úgy állítom át, hogy:
+
+- desktopon `h-full` / `min-h-0` alapú legyen,
+- a belső tartalom teljes rendelkezésre álló magassággal számoljon,
+- mobilon a mostani kártyás, természetesen görgethető működés megmaradjon.
+
+#### 2. Fix felső térköz megtartása
+
+A jelenlegi felső pozícionálást nem hagyom össze-vissza skálázódni.
+
+Desktopon fix érték marad például:
+
+```tsx
+md:pt-[120px]
+```
+
+Így a főmenü és a Projects tartalom kezdete közötti távolság mindig stabil marad.
+
+#### 3. A táblázat magasságának dinamikussá tétele
+
+A mostani rész:
+
+```tsx
+<div className="max-h-[500px] overflow-y-auto">
+```
+
+helyett rugalmas megoldás lesz:
+
+```tsx
+<div className="flex-1 min-h-0 overflow-y-auto">
+```
+
+Ehhez a szülő konténerek is `flex flex-col min-h-0` struktúrát kapnak, hogy a táblázat pontosan a maradék képernyőmagasságot használja.
+
+#### 4. Tabs és leírás fix magasságú blokkok maradnak
+
+A kategória gombok és a leírás nem nyúlnak, nem ugrálnak:
+
+```tsx
+<div className="shrink-0">tabs</div>
+<div className="shrink-0">description</div>
+```
+
+A táblázat kapja meg a fennmaradó helyet.
+
+#### 5. Mobil nézet változatlan marad
+
+A mobil layout:
+
+- továbbra is kártyás marad,
+- nem kap desktopos belső scrollt,
+- a teljes oldal természetesen görgethető marad.
+
+### Várható eredmény
+
+Desktopon:
+
+- nagyobb kijelzőn több projekt-sor látszik egyszerre,
+- kisebb laptopon kevesebb sor látszik, de a táblázat belül scrollozható,
+- megszűnik a felesleges nagy whitespace a táblázat után,
+- a felső menüsor és a Projects tartalom kezdete közötti távolság fix marad,
+- a mobil nézet nem változik.
+
+### Érintett fájl
+
+- `src/pages/Projects.tsx`
 
