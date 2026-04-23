@@ -222,9 +222,9 @@ const Projects = () => {
               {/* Row 2: Description - full width */}
               <div className="col-span-full opacity-95">{p.description[lang]}</div>
               {/* Row 3: Year (left) + Status (right) */}
-              <div className="text-[clamp(0.8125rem,1vw,14px)] opacity-90">{p.year}</div>
+              <div className="text-[clamp(1rem,1vw,16px)] opacity-90">{p.year}</div>
               {hasStatus && p.status && (
-                <div className="text-[clamp(0.8125rem,1vw,14px)] opacity-90 text-right">{p.status[lang]}</div>
+                <div className="text-[clamp(1rem,1vw,16px)] opacity-90 text-right">{p.status[lang]}</div>
               )}
             </div>
           ))}

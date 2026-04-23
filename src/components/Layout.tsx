@@ -47,7 +47,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         <div className="hidden md:flex items-center gap-1">
           <button
             onClick={() => setLang("en")}
-            className={`text-xs font-normal tracking-wide px-2 py-1 rounded transition-colors ${
+              className={`text-[1rem] font-normal tracking-wide px-2 py-1 rounded transition-colors ${
               lang === "en" ? "text-foreground bg-[#FAFAFA]" : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -55,7 +55,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           </button>
           <button
             onClick={() => setLang("hu")}
-            className={`text-xs font-normal tracking-wide px-2 py-1 rounded transition-colors ${
+              className={`text-[1rem] font-normal tracking-wide px-2 py-1 rounded transition-colors ${
               lang === "hu" ? "text-foreground bg-[#FAFAFA]" : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -104,7 +104,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="absolute bottom-12 flex items-center gap-3">
             <button
               onClick={() => setLang("en")}
-              className={`text-sm font-light tracking-wide px-3 py-1 rounded transition-colors ${
+                className={`text-[1rem] font-light tracking-wide px-3 py-1 rounded transition-colors ${
                 lang === "en" ? "text-[#242424]" : "text-[#242424]/40"
               }`}
             >
@@ -113,7 +113,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             <span className="text-[#242424]/20">|</span>
             <button
               onClick={() => setLang("hu")}
-              className={`text-sm font-light tracking-wide px-3 py-1 rounded transition-colors ${
+                className={`text-[1rem] font-light tracking-wide px-3 py-1 rounded transition-colors ${
                 lang === "hu" ? "text-[#242424]" : "text-[#242424]/40"
               }`}
             >
