@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import molDufi01 from "@/assets/projects/mol-dufi-01.png";
@@ -27,8 +28,22 @@ const projectImages = [
   papa01, kiraly01, mem02, almassyTer01,
 ];
 
+const INITIAL_VISIBLE_IMAGE_COUNT = 6;
+
 const About = () => {
   const { t } = useLanguage();
+  const [canStartMarquee, setCanStartMarquee] = useState(false);
+  const loadedInitialImages = useRef(new Set<number>());
+
+  const handleInitialImageReady = (index: number) => {
+    if (index >= INITIAL_VISIBLE_IMAGE_COUNT || canStartMarquee) return;
+
+    loadedInitialImages.current.add(index);
+
+    if (loadedInitialImages.current.size >= INITIAL_VISIBLE_IMAGE_COUNT) {
+      setCanStartMarquee(true);
+    }
+  };
 
   return (
     <div className="relative min-h-screen md:h-full flex flex-col items-center bg-white">
@@ -51,18 +66,29 @@ const About = () => {
       <div className="relative z-10 w-full mt-16 overflow-hidden">
         <div
           className="flex w-max will-change-transform animate-marquee"
-          style={{ animationDuration: '180s' }}
+          style={{
+            animationDuration: '180s',
+            animationPlayState: canStartMarquee ? 'running' : 'paused',
+          }}
         >
           {[0, 1].map((group) => (
             <div key={group} className="flex min-w-max shrink-0 gap-6 pr-6">
               {projectImages.map((img, i) => (
-                <img
+                <div
                   key={`${group}-${i}`}
-                  src={img}
-                  alt={`Project ${i + 1}`}
-                  className="h-[clamp(130px,13vw,200px)] w-auto object-contain shrink-0 flex-none"
-                  loading="eager"
-                />
+                  className="h-[clamp(130px,13vw,200px)] w-[clamp(200px,20vw,320px)] shrink-0 flex items-center justify-center"
+                >
+                  <img
+                    src={img}
+                    alt={`Project ${i + 1}`}
+                    className="max-h-full max-w-full object-contain"
+                    loading={group === 0 && i < INITIAL_VISIBLE_IMAGE_COUNT ? "eager" : "lazy"}
+                    fetchPriority={group === 0 && i < INITIAL_VISIBLE_IMAGE_COUNT ? "high" : "auto"}
+                    decoding="async"
+                    onLoad={() => group === 0 && handleInitialImageReady(i)}
+                    onError={() => group === 0 && handleInitialImageReady(i)}
+                  />
+                </div>
               ))}
             </div>
           ))}
