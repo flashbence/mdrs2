@@ -87,7 +87,7 @@ const Team = () => {
                 />
               </div>
               <div className="mt-1.5">
-                <p className="font-heading font-light text-base leading-tight text-foreground">
+                <p className="font-heading font-light text-[clamp(1rem,1.2vw,20px)] leading-tight text-foreground">
                   {t(member.nameKey)}
                 </p>
                 <p className="font-body font-light text-[clamp(1rem,1.08vw,18px)] leading-tight text-muted-foreground mt-0.5">
