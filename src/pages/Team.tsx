@@ -66,7 +66,7 @@ const Team = () => {
                   <span className="text-white font-heading font-light text-[clamp(19px,1.5vw,23px)] leading-tight">
                     {t(member.nameKey)}
                   </span>
-                  <span className="text-white/80 font-body font-light text-[clamp(14px,1.08vw,16px)] leading-tight mt-[2px]">
+                  <span className="text-white/80 font-body font-light text-[clamp(1rem,1.08vw,18px)] leading-tight mt-[2px]">
                     {t(member.roleKey)}
                   </span>
                 </div>
@@ -90,7 +90,7 @@ const Team = () => {
                 <p className="font-heading font-light text-base leading-tight text-foreground">
                   {t(member.nameKey)}
                 </p>
-                <p className="font-body font-light text-sm leading-tight text-muted-foreground mt-0.5">
+                <p className="font-body font-light text-[clamp(1rem,1.08vw,18px)] leading-tight text-muted-foreground mt-0.5">
                   {t(member.roleKey)}
                 </p>
               </div>

@@ -23,12 +23,12 @@ const Index = () => {
           <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading sm:whitespace-nowrap break-words">
             {t("home.title")}
           </h1>
-          <p className="text-sm sm:text-sm md:text-base font-light text-muted-foreground leading-relaxed mb-6 max-w-4xl mx-auto font-body break-words">
+          <p className="text-[clamp(1rem,1.08vw,18px)] font-light text-muted-foreground leading-relaxed mb-6 max-w-4xl mx-auto font-body break-words">
             {t("home.subtitle")}
           </p>
           <Link
             to="/about"
-            className="inline-flex justify-center rounded-[11px] px-[89px] py-2 bg-white/[0.12] backdrop-blur-[18px] border border-white/[0.18] text-[0.89em] tracking-normal font-light text-foreground cursor-pointer transition-all duration-[250ms] ease-in-out shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
+            className="inline-flex justify-center rounded-[11px] px-[89px] py-2 bg-white/[0.12] backdrop-blur-[18px] border border-white/[0.18] text-[clamp(1rem,1.08vw,18px)] tracking-normal font-light text-foreground cursor-pointer transition-all duration-[250ms] ease-in-out shadow-[0_12px_32px_rgba(0,0,0,0.25)]"
           >
             {t("home.cta")}
           </Link>
