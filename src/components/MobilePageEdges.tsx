@@ -3,12 +3,11 @@ import { useEffect } from "react";
 /**
  * Mobile-only background sync for top/bottom viewport edges.
  *
- * Renders two fixed bands just outside the viewport AND sets the actual
- * <html> + <body> background on mobile so iOS/Android browsers show the
- * correct color in the address-bar/home-indicator/overscroll areas.
- *
- * topColor    - color visible at the very top of the page
- * bottomColor - color visible at the very bottom of the page
+ * - Sets <html> and <body> background to a hard-stop split gradient so iOS
+ *   Safari overscroll/safe-area regions match the page edges.
+ * - Updates the <meta name="theme-color"> to topColor so the iOS/Android
+ *   browser chrome (status bar / address bar) blends with the page top.
+ * - Renders two off-screen fixed bands as belt-and-suspenders.
  */
 const MobilePageEdges = ({
   topColor,
@@ -21,24 +20,43 @@ const MobilePageEdges = ({
     if (typeof window === "undefined") return;
     const mq = window.matchMedia("(max-width: 767px)");
 
+    // Ensure a theme-color meta tag exists.
+    let themeMeta = document.querySelector<HTMLMetaElement>(
+      'meta[name="theme-color"]'
+    );
+    let createdThemeMeta = false;
+    if (!themeMeta) {
+      themeMeta = document.createElement("meta");
+      themeMeta.name = "theme-color";
+      document.head.appendChild(themeMeta);
+      createdThemeMeta = true;
+    }
+    const previousThemeColor = themeMeta.getAttribute("content");
+
     const apply = () => {
       const html = document.documentElement;
       const body = document.body;
       if (mq.matches) {
-        // Split background: top half = topColor, bottom half = bottomColor.
-        // Using a hard-stop gradient avoids any blending in the middle but
-        // guarantees both overscroll zones match the page edges.
         const bg = `linear-gradient(to bottom, ${topColor} 0%, ${topColor} 50%, ${bottomColor} 50%, ${bottomColor} 100%)`;
-        html.style.background = bg;
-        body.style.background = bg;
-        // Hint browser UI (iOS Safari status bar / Android chrome) to blend.
+        // html drives overscroll color on iOS Safari; use solid top color so
+        // the rubber-band area at the top stays clean.
         html.style.backgroundColor = topColor;
+        html.style.background = topColor;
+        // body holds the actual split gradient under the page content.
+        body.style.background = bg;
         body.style.backgroundColor = topColor;
+        body.style.backgroundAttachment = "fixed";
+        // Browser chrome color (iOS Safari status bar tint, Android URL bar).
+        themeMeta!.setAttribute("content", topColor);
       } else {
         html.style.background = "";
-        body.style.background = "";
         html.style.backgroundColor = "";
+        body.style.background = "";
         body.style.backgroundColor = "";
+        body.style.backgroundAttachment = "";
+        if (previousThemeColor !== null) {
+          themeMeta!.setAttribute("content", previousThemeColor);
+        }
       }
     };
 
@@ -49,9 +67,15 @@ const MobilePageEdges = ({
       const html = document.documentElement;
       const body = document.body;
       html.style.background = "";
-      body.style.background = "";
       html.style.backgroundColor = "";
+      body.style.background = "";
       body.style.backgroundColor = "";
+      body.style.backgroundAttachment = "";
+      if (createdThemeMeta) {
+        themeMeta?.parentNode?.removeChild(themeMeta);
+      } else if (previousThemeColor !== null) {
+        themeMeta?.setAttribute("content", previousThemeColor);
+      }
     };
   }, [topColor, bottomColor]);
 
