@@ -16,7 +16,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.projects": "Munkáink",
     "nav.contact": "Kapcsolat",
     // Home
-    "home.title": "Tartószerkezeti tervezés és szakértés",
+    "home.title": "Tartószerkezeti tervezés \nés \nszakértés",
     "home.subtitle": "Szerkezetben gondolkodunk – koncepciótól a megvalósulásig. Vasbeton, acél-, fa- és üvegszerkezetek az alapoktól a tetőig.",
     "home.cta": "Bővebben",
     // About
