@@ -1,6 +1,5 @@
 import { useRef, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import MobilePageEdges from "@/components/MobilePageEdges";
 
 import molDufi01 from "@/assets/projects/mol-dufi-01.png";
 import mem01 from "@/assets/projects/mem-01.png";
@@ -48,7 +47,6 @@ const About = () => {
 
   return (
     <div className="relative min-h-screen md:h-full flex flex-col items-center bg-white">
-      <MobilePageEdges topColor="#B5C3D3" bottomColor="#FAFAFA" />
       {/* Blue gradient from top */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to bottom, rgba(181,195,211,0.35) 0%, rgba(181,195,211,0.15) 40%, rgba(255,255,255,0.1) 70%, white 100%)'

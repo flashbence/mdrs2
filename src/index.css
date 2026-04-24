@@ -12,16 +12,11 @@
   }
 }
 
-/* Mobile: ensure html/body background covers the entire visible area
-   including iOS Safari safe-area / overscroll regions. */
 @media (max-width: 767px) {
   html, body {
-    min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
+    background-color: hsl(var(--primary));
   }
 }
-
 
 @layer base {
   :root {
@@ -73,17 +68,8 @@
   }
 
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
     font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif;
-  }
-
-  /* Default background only on desktop. On mobile the per-page
-     MobilePageEdges component sets html/body background to match
-     the visible top/bottom edges of the active page. */
-  @media (min-width: 768px) {
-    html, body {
-      @apply bg-background;
-    }
   }
 
   h1, h2, h3, h4, h5, h6 {
