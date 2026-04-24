@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import heroBuilding from "@/assets/hero-building.webp";
+import MobilePageEdges from "@/components/MobilePageEdges";
 
 const Index = () => {
   const { t } = useLanguage();
 
   return (
     <div className="relative min-h-screen md:h-screen overflow-visible md:overflow-hidden bg-white">
+      <MobilePageEdges topColor="#FAFAFA" bottomColor="#B5C3D3" />
       {/* Blue gradient from bottom */}
       <div
         className="pointer-events-none absolute inset-0"

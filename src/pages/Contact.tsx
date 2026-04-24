@@ -2,12 +2,14 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Building2, FileText, Facebook } from "lucide-react";
 import botondImg from "@/assets/team/madaras-botond.jpeg";
 import koppanyImg from "@/assets/team/madaras-koppany.jpeg";
+import MobilePageEdges from "@/components/MobilePageEdges";
 
 const Contact = () => {
   const { t } = useLanguage();
 
   return (
     <div className="relative flex items-center justify-center px-[2vw] lg:px-16 xl:px-24 md:fixed md:inset-0 md:z-10 pointer-events-none pt-20 pb-[clamp(48px,10vw,80px)] lg:pt-0 lg:pb-0">
+      <MobilePageEdges topColor="#FAFAFA" bottomColor="#B5C3D3" />
       {/* Blue gradient from bottom */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)'

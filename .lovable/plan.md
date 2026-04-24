@@ -1,39 +1,71 @@
-## Fehér csík mobil nézet alján
+## Mobil safe-area színek oldalanként
 
-### Mi okozza?
+### Probléma
 
-Mobilon a Layout `min-h-screen` magas, de a `body` háttérszíne `--background` (#FAFAFA, gyakorlatilag fehér). A kék gradient minden oldalon csak az adott oldal divjén belül van, és nem ér el az alsó képernyőszélig (pl. mert az oldal tartalma rövidebb, vagy a böngésző URL sávja eltűnik görgetéskor és felfedi a body-t alul).
+Mobilon a böngésző URL sávja eltűnésekor / overscroll során, vagy ha a tartalom nem éri el pontosan a viewport szélét, a `body` háttere látszik a tetején és/vagy alján. A jelenlegi globális `body { background: hsl(--primary) }` minden oldalon kéket mutat, de oldalanként eltérő szín kell:
 
-Ez nem a Lovable preview badge: az csak a szerkesztőben látszik. A felhasználó által tapasztalt fehér csík a böngésző viewport alján marad, mert a `body` fehér háttere átüt.
+| Oldal | Felső szín (top) | Alsó szín (bottom) |
+|---|---|---|
+| Index (`/`) | fehér | kék |
+| About (`/about`) | kék | fehér |
+| Team (`/team`) | kék | fehér |
+| Projects (`/projects`) | fehér | kék |
+| Contact (`/contact`) | fehér | kék |
+
+A lényeg: az oldal gradient-jének **legfelső** színe folytatódjon felfelé (status bar, safe-area-top), a **legalsó** színe folytatódjon lefelé (URL sáv mögé, safe-area-bottom).
 
 ### Megoldás
 
-A legegyszerűbb és legbiztosabb megoldás: a `body` és a `html` háttérszínét mobilon a kék gradient legalsó tónusára állítani, hogy ha valami "túllóg" vagy nem ér le teljesen, akkor is a kék szín legyen alul, ne fehér.
+Minden oldal kap két `fixed` pozíciójú "extender" sávot: egyet a viewport teteje fölött (`-top`) és egyet az alja alatt (`-bottom`). Ezek a body színét felülírják az adott oldalon a saját gradientjének megfelelő full színnel.
 
-A meglévő gradientek alja `rgba(181,195,211,0.95)` — ez a `#B5C3D3` (a `--primary` token) szín. Ezt használjuk.
+Mivel mind az 5 oldalnál csak két szín jelenik meg (`#B5C3D3` kék és `#FAFAFA` fehér), elég egy egyszerű, újrafelhasználható komponens: `MobilePageEdges` ami `topColor` és `bottomColor` propot kap, és csak mobilon (`md:hidden`) renderel két 100px magas, fix pozíciójú sávot a viewport teteje fölé és alja alá (`top: -100px` és `bottom: -100px`).
 
 ### Tervezett módosítások
 
-**`src/index.css`** — a `body`-nak adunk háttérszínt mobilon, ami megegyezik a gradient aljával:
+**1. `src/index.css`** — vegyük le a globális mobil body kék hátteret (visszaáll fehérre, ami az alapértelmezett `--background` #FAFAFA):
 
 ```css
+/* Eltávolítjuk: */
 @media (max-width: 767px) {
-  html, body {
-    background-color: hsl(var(--primary));
-  }
+  html, body { background-color: hsl(var(--primary)); }
 }
 ```
 
-Így ha bárhol a body kilátszik (pl. iOS Safari URL sáv eltűnik, overscroll, rövidebb tartalom), a kék szín lesz látható, nem fehér csík.
+**2. Új komponens: `src/components/MobilePageEdges.tsx`**
 
-Asztali nézeten nem változik semmi, mert ott `overflow: hidden` és pontosan `100vh` magas a layout.
+```tsx
+const MobilePageEdges = ({ topColor, bottomColor }: { topColor: string; bottomColor: string }) => (
+  <>
+    <div className="md:hidden fixed left-0 right-0 -top-[200px] h-[200px] z-0 pointer-events-none" style={{ backgroundColor: topColor }} />
+    <div className="md:hidden fixed left-0 right-0 -bottom-[200px] h-[200px] z-0 pointer-events-none" style={{ backgroundColor: bottomColor }} />
+  </>
+);
+```
 
-### Érintett fájl
+Itt a `fixed` + negatív `top/bottom` biztosítja, hogy a viewporton kívül is folytatódjon a szín, így az iOS Safari URL sáv eltűnésekor / overscroll során is helyes szín látszik.
 
-- `src/index.css`
+**3. Minden oldalhoz hozzáadjuk a helyes színeket:**
+
+- `Index.tsx`: `<MobilePageEdges topColor="#FAFAFA" bottomColor="#B5C3D3" />`
+- `About.tsx`: `<MobilePageEdges topColor="#B5C3D3" bottomColor="#FAFAFA" />` (a felső gradient kéket mutat, alul fehérbe vált)
+- `Team.tsx`: `<MobilePageEdges topColor="#B5C3D3" bottomColor="#FAFAFA" />`
+- `Projects.tsx`: `<MobilePageEdges topColor="#FAFAFA" bottomColor="#B5C3D3" />`
+- `Contact.tsx`: `<MobilePageEdges topColor="#FAFAFA" bottomColor="#B5C3D3" />`
+
+Megjegyzés: az `About` és `Team` gradientje `to bottom`/`to top` átlátszóságok keverékét használja átlátszó/fehér felé. A láthatatlan részen át a body fehér háttere látszik, ezért ahol a gradient ténylegesen halványul, ott fehér a vizuális szín. A fenti táblázatban már a tényleges, szemmel látható szélső színeket adtam meg.
+
+### Érintett fájlok
+
+- `src/index.css` (1 sor törlés)
+- `src/components/MobilePageEdges.tsx` (új, ~10 sor)
+- `src/pages/Index.tsx`
+- `src/pages/About.tsx`
+- `src/pages/Team.tsx`
+- `src/pages/Projects.tsx`
+- `src/pages/Contact.tsx`
 
 ### Várható eredmény
 
-- Mobilon az oldalak alján már nem lesz fehér csík.
-- A kék gradient természetesen folytatódik a viewport aljáig.
-- Asztali nézet változatlan.
+- Mobilon minden oldal teteje és alja természetesen folytatódik a viewporton kívül a megfelelő (kék vagy fehér) színnel.
+- Nincs többé fehér csík kék gradientes oldalak alján, és nincs kék csík a fehér aljú oldalakon.
+- Asztali nézet teljesen változatlan (a komponens `md:hidden`).
