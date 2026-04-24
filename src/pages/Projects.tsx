@@ -148,7 +148,7 @@ const Projects = () => {
 
   return (
     <div
-      className="min-h-svh md:h-full md:min-h-0 relative flex flex-col items-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden"
+      className="min-h-svh md:h-full md:min-h-0 relative flex flex-col items-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden pb-[env(safe-area-inset-bottom)]"
       style={{
         background: 'linear-gradient(to top, rgba(181,195,211,0.5) 0%, rgba(181,195,211,0.25) 30%, rgba(181,195,211,0.1) 55%, white 75%)'
       }}
