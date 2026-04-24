@@ -37,7 +37,7 @@ const Team = () => {
 
   return (
     <div className="min-h-screen md:h-full flex flex-col items-center justify-center relative pt-20 md:pt-0">
-      <MobilePageEdges topColor="#B5C3D3" bottomColor="#FAFAFA" />
+      <MobilePageEdges topColor="#FAFAFA" bottomColor="#B5C3D3" />
       <div
         className="pointer-events-none absolute inset-0"
         style={{
