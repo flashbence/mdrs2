@@ -147,12 +147,14 @@ const Projects = () => {
   const hasStatus = active !== "szakertes";
 
   return (
-    <div
-      className="min-h-screen md:h-full md:min-h-0 relative flex flex-col items-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden"
-      style={{
-        background: 'linear-gradient(to top, rgba(181,195,211,0.5) 0%, rgba(181,195,211,0.25) 30%, rgba(181,195,211,0.1) 55%, white 75%)'
-      }}
-    >
+    <div className="min-h-screen md:h-full md:min-h-0 relative flex flex-col items-center px-[4vw] sm:px-[8vw] font-body overflow-visible md:overflow-hidden bg-white">
+      {/* Blue gradient from bottom - fixed to viewport */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background: 'linear-gradient(to top, rgba(181,195,211,0.5) 0%, rgba(181,195,211,0.25) 30%, rgba(181,195,211,0.1) 55%, white 75%)'
+        }}
+      />
 
       <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-20 sm:pt-[120px] pb-6 md:h-full md:min-h-0 md:pb-6">
         {/* Tabs */}
