@@ -17,7 +17,7 @@ const Index = () => {
       />
 
       {/* Layout: text + image, pushed towards center-bottom */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center sm:justify-end pb-0 pt-[120px]">
+      <div className="relative z-10 flex min-h-screen md:h-full flex-col items-center justify-center sm:justify-end pb-0 pt-[120px]">
         {/* Text content */}
         <div className="px-4 sm:px-8 md:px-16 lg:px-24 text-center mb-10 sm:mb-6 shrink-0 min-w-0 w-full">
           <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-[3.2rem] font-light tracking-tight text-foreground leading-tight mb-4 font-heading sm:whitespace-nowrap break-words">
