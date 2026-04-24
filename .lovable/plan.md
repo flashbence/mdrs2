@@ -1,39 +1,38 @@
-## Fehér csík mobil nézet alján
+## Favicon helyes beállítása + cache-busting
 
-### Mi okozza?
+### Cél
 
-Mobilon a Layout `min-h-screen` magas, de a `body` háttérszíne `--background` (#FAFAFA, gyakorlatilag fehér). A kék gradient minden oldalon csak az adott oldal divjén belül van, és nem ér el az alsó képernyőszélig (pl. mert az oldal tartalma rövidebb, vagy a böngésző URL sávja eltűnik görgetéskor és felfedi a body-t alul).
+A böngészők gyakran agresszívan cache-elik a favicon-t. Ha a fájl neve változatlan, akkor a régi ikon ragadhat a felhasználónál akkor is, ha a tartalom új. A megoldás: új fájlnév használata (verziózott név), és a `index.html`-ben több helyes méret/típus deklarálása.
 
-Ez nem a Lovable preview badge: az csak a szerkesztőben látszik. A felhasználó által tapasztalt fehér csík a böngésző viewport alján marad, mert a `body` fehér háttere átüt.
+### Mit fogok csinálni
 
-### Megoldás
+1. **Új fájlnév létrehozása** a `public/` mappában:
+   - A meglévő `public/favicon.png` átmásolása `public/favicon-v2.png` néven (azonos tartalommal — csak a név változik a cache megtörése miatt).
+   - A régi `public/favicon.png` egyelőre megmarad, hogy ne legyen 404 olyan helyeken, ahol esetleg még be van drótozva.
 
-A legegyszerűbb és legbiztosabb megoldás: a `body` és a `html` háttérszínét mobilon a kék gradient legalsó tónusára állítani, hogy ha valami "túllóg" vagy nem ér le teljesen, akkor is a kék szín legyen alul, ne fehér.
+2. **`index.html` frissítése**:
+   - A `<link rel="icon">` az új `/favicon-v2.png`-re mutasson.
+   - Hozzáadok `apple-touch-icon` deklarációt is, hogy iOS-en is rendben legyen.
+   - A `type="image/png"` és `sizes` attribútumok beállítása.
 
-A meglévő gradientek alja `rgba(181,195,211,0.95)` — ez a `#B5C3D3` (a `--primary` token) szín. Ezt használjuk.
+### Példa az új `<head>` blokkra
 
-### Tervezett módosítások
-
-**`src/index.css`** — a `body`-nak adunk háttérszínt mobilon, ami megegyezik a gradient aljával:
-
-```css
-@media (max-width: 767px) {
-  html, body {
-    background-color: hsl(var(--primary));
-  }
-}
+```html
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png" />
+<link rel="apple-touch-icon" href="/favicon-v2.png" />
 ```
 
-Így ha bárhol a body kilátszik (pl. iOS Safari URL sáv eltűnik, overscroll, rövidebb tartalom), a kék szín lesz látható, nem fehér csík.
+### Fontos megjegyzés
 
-Asztali nézeten nem változik semmi, mert ott `overflow: hidden` és pontosan `100vh` magas a layout.
+- A jelenlegi `public/favicon.png` **tartalma** változatlan marad — csak a név lesz új. Ha új grafikát is szeretnél a favicon-hoz, töltsd fel a képet és cseréljük le ténylegesen a fájlt is.
+- A böngésződben a tab-on néha akkor is a régi ikon marad, amíg a tab-ot teljesen be nem zárod. Inkognitó ablakban azonnal látszik az új favicon.
 
-### Érintett fájl
+### Érintett fájlok
 
-- `src/index.css`
+- `public/favicon-v2.png` (új, az eredeti másolata)
+- `index.html` (frissítve az új hivatkozással)
 
 ### Várható eredmény
 
-- Mobilon az oldalak alján már nem lesz fehér csík.
-- A kék gradient természetesen folytatódik a viewport aljáig.
-- Asztali nézet változatlan.
+- Az új favicon név miatt a böngészők kénytelenek újra lekérni az ikont.
+- Helyes `type` és `sizes` attribútumok, plusz `apple-touch-icon` támogatás.
