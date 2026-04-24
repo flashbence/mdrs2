@@ -35,7 +35,7 @@ const Team = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen md:h-full flex flex-col items-center justify-center relative pt-20 md:pt-0">
+    <div className="min-h-screen md:h-full flex flex-col items-center md:justify-center relative pt-20 md:pt-0 pb-10 md:pb-0">
       {/* Blue gradient - fixed to viewport */}
       <div
         className="pointer-events-none fixed inset-0 z-0"
