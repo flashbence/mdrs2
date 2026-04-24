@@ -1,41 +1,38 @@
-## Vercel SPA rewrites: `vercel.json` a projekt gyökerébe
+## Favicon helyes beállítása + cache-busting
 
 ### Cél
 
-Ha a publikált oldalt Vercel-en hosztoljuk, a közvetlen URL-ek (pl. `/about`, `/projects`, `/team`, `/contact`) frissítéskor vagy direkt megnyitáskor ne dobjanak 404-et, hanem a React Router (BrowserRouter) tudja kezelni őket.
+A böngészők gyakran agresszívan cache-elik a favicon-t. Ha a fájl neve változatlan, akkor a régi ikon ragadhat a felhasználónál akkor is, ha a tartalom új. A megoldás: új fájlnév használata (verziózott név), és a `index.html`-ben több helyes méret/típus deklarálása.
 
-Ehhez egy `vercel.json` fájl kell a projekt gyökerébe SPA rewrite szabállyal, ami minden ismeretlen útvonalat az `index.html`-re irányít.
+### Mit fogok csinálni
 
-### Megjegyzés a Lovable hostingról
+1. **Új fájlnév létrehozása** a `public/` mappában:
+   - A meglévő `public/favicon.png` átmásolása `public/favicon-v2.png` néven (azonos tartalommal — csak a név változik a cache megtörése miatt).
+   - A régi `public/favicon.png` egyelőre megmarad, hogy ne legyen 404 olyan helyeken, ahol esetleg még be van drótozva.
 
-A Lovable saját hostingján (`.lovable.app` domain és Lovable-en keresztül kötött custom domain) a SPA fallback automatikus, ott nem kell semmilyen konfig fájl. Ez a `vercel.json` **csak akkor lép működésbe, ha Vercelre deployoljuk** a projektet — a Lovable hosting figyelmen kívül hagyja, tehát nem okoz mellékhatást.
+2. **`index.html` frissítése**:
+   - A `<link rel="icon">` az új `/favicon-v2.png`-re mutasson.
+   - Hozzáadok `apple-touch-icon` deklarációt is, hogy iOS-en is rendben legyen.
+   - A `type="image/png"` és `sizes` attribútumok beállítása.
 
-### Tervezett fájl
+### Példa az új `<head>` blokkra
 
-Új fájl: `vercel.json` a repo gyökerében.
-
-Tartalom:
-
-```json
-{
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
+```html
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png" />
+<link rel="apple-touch-icon" href="/favicon-v2.png" />
 ```
 
-### Hogyan működik
+### Fontos megjegyzés
 
-- A Vercel minden bejövő kérést megpróbál először statikus fájlként kiszolgálni (`/assets/...`, képek, JS, CSS stb.).
-- Ha nincs hozzá fájl (pl. `/about`), a rewrite szabály miatt visszaadja az `index.html`-t.
-- A böngésző betölti a React appot, és a `BrowserRouter` lekezeli az URL-t, megjelenítve a megfelelő oldalt (`About`, `Projects`, stb.).
-- A `*` route-on definiált `NotFound` oldal csak akkor jelenik meg, ha a React Routerben sincs ilyen útvonal — ez a helyes viselkedés.
+- A jelenlegi `public/favicon.png` **tartalma** változatlan marad — csak a név lesz új. Ha új grafikát is szeretnél a favicon-hoz, töltsd fel a képet és cseréljük le ténylegesen a fájlt is.
+- A böngésződben a tab-on néha akkor is a régi ikon marad, amíg a tab-ot teljesen be nem zárod. Inkognitó ablakban azonnal látszik az új favicon.
 
-### Érintett fájl
+### Érintett fájlok
 
-- új: `vercel.json`
+- `public/favicon-v2.png` (új, az eredeti másolata)
+- `index.html` (frissítve az új hivatkozással)
 
 ### Várható eredmény
 
-- Vercelre történő deploy után a `/about`, `/team`, `/projects`, `/contact` URL-ek közvetlen megnyitása és frissítése is működik 404 nélkül.
-- A Lovable hostingon semmi nem változik.
+- Az új favicon név miatt a böngészők kénytelenek újra lekérni az ikont.
+- Helyes `type` és `sizes` attribútumok, plusz `apple-touch-icon` támogatás.
