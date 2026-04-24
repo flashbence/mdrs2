@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import MobilePageEdges from "@/components/MobilePageEdges";
 
 type Category = "lako" | "kozeput" | "ipari" | "specialis" | "szakertes";
 
@@ -153,6 +154,7 @@ const Projects = () => {
         background: 'linear-gradient(to top, rgba(181,195,211,0.5) 0%, rgba(181,195,211,0.25) 30%, rgba(181,195,211,0.1) 55%, white 75%)'
       }}
     >
+      <MobilePageEdges topColor="#FAFAFA" bottomColor="#B5C3D3" />
 
       <div className="relative z-10 w-full max-w-[1400px] flex flex-col items-stretch pt-20 sm:pt-[120px] pb-6 md:h-full md:min-h-0 md:pb-6">
         {/* Tabs */}
