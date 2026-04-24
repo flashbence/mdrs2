@@ -7,9 +7,9 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen md:h-screen overflow-visible md:overflow-hidden bg-white">
-      {/* Blue gradient from bottom - fixed to viewport */}
+      {/* Blue gradient from bottom */}
       <div
-        className="pointer-events-none fixed inset-0 z-0"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
             "linear-gradient(to top, rgba(181,195,211,0.95) 0%, rgba(181,195,211,0.7) 30%, rgba(181,195,211,0.4) 55%, rgba(220,230,240,0.15) 75%, transparent 90%)",

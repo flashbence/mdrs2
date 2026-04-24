@@ -35,10 +35,9 @@ const Team = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen md:h-full flex flex-col items-center md:justify-center relative pt-20 md:pt-0 pb-10 md:pb-0">
-      {/* Blue gradient - fixed to viewport */}
+    <div className="min-h-screen md:h-full flex flex-col items-center justify-center relative pt-20 md:pt-0">
       <div
-        className="pointer-events-none fixed inset-0 z-0"
+        className="pointer-events-none absolute inset-0"
         style={{
           background:
             "linear-gradient(to top, rgba(181,195,211,0.6) 0%, rgba(181,195,211,0.3) 35%, rgba(181,195,211,0.1) 65%, transparent 100%)",
