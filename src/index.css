@@ -12,11 +12,6 @@
   }
 }
 
-html, body, #root {
-  min-height: 100dvh;
-  background-color: hsl(var(--background));
-}
-
 @layer base {
   :root {
     --background: 210 14% 98%;       /* #FAFAFA */
