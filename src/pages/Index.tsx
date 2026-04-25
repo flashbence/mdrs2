@@ -6,7 +6,7 @@ const Index = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="relative min-h-svh md:h-screen overflow-visible md:overflow-hidden bg-white pb-[env(safe-area-inset-bottom)]">
+    <div className="relative min-h-svh md:h-screen overflow-visible md:overflow-hidden bg-white safe-area-top safe-area-bottom">
       {/* Blue gradient from bottom */}
       <div
         className="pointer-events-none absolute inset-0"

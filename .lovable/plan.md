@@ -1,38 +1,52 @@
-## Favicon helyes beállítása + cache-busting
+## Plan: CSS-only iOS safe area handling
 
-### Cél
+Replace the existing inline `pb-[env(safe-area-inset-bottom)]` approach with reusable utility classes, and also handle the **top** safe area (notch / dynamic island) — which the current implementation doesn't address.
 
-A böngészők gyakran agresszívan cache-elik a favicon-t. Ha a fájl neve változatlan, akkor a régi ikon ragadhat a felhasználónál akkor is, ha a tartalom új. A megoldás: új fájlnév használata (verziózott név), és a `index.html`-ben több helyes méret/típus deklarálása.
+### 1. `src/index.css` — add utility classes
 
-### Mit fogok csinálni
+Add outside any media query (so they apply on all viewports, but `env()` returns 0 on desktop, making them effectively mobile-only):
 
-1. **Új fájlnév létrehozása** a `public/` mappában:
-   - A meglévő `public/favicon.png` átmásolása `public/favicon-v2.png` néven (azonos tartalommal — csak a név változik a cache megtörése miatt).
-   - A régi `public/favicon.png` egyelőre megmarad, hogy ne legyen 404 olyan helyeken, ahol esetleg még be van drótozva.
-
-2. **`index.html` frissítése**:
-   - A `<link rel="icon">` az új `/favicon-v2.png`-re mutasson.
-   - Hozzáadok `apple-touch-icon` deklarációt is, hogy iOS-en is rendben legyen.
-   - A `type="image/png"` és `sizes` attribútumok beállítása.
-
-### Példa az új `<head>` blokkra
-
-```html
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png" />
-<link rel="apple-touch-icon" href="/favicon-v2.png" />
+```css
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
 ```
 
-### Fontos megjegyzés
+### 2. Apply to each page
 
-- A jelenlegi `public/favicon.png` **tartalma** változatlan marad — csak a név lesz új. Ha új grafikát is szeretnél a favicon-hoz, töltsd fel a képet és cseréljük le ténylegesen a fájlt is.
-- A böngésződben a tab-on néha akkor is a régi ikon marad, amíg a tab-ot teljesen be nem zárod. Inkognitó ablakban azonnal látszik az új favicon.
+For each page, add `safe-area-top` to the outermost wrapper and `safe-area-bottom` to the same wrapper (or the bottommost section if it differs). I'll also remove the now-redundant inline `pb-[env(safe-area-inset-bottom)]` Tailwind classes added previously, to keep things clean.
 
-### Érintett fájlok
+**Files & exact targets:**
 
-- `public/favicon-v2.png` (új, az eredeti másolata)
-- `index.html` (frissítve az új hivatkozással)
+- **`src/pages/Index.tsx`** — outer `<div className="relative min-h-svh md:h-screen ... pb-[env(safe-area-inset-bottom)]">`
+  → replace `pb-[env(safe-area-inset-bottom)]` with `safe-area-top safe-area-bottom`
 
-### Várható eredmény
+- **`src/pages/About.tsx`** — outer `<div className="relative min-h-svh md:h-full ... pb-[env(safe-area-inset-bottom)]">`
+  → replace `pb-[env(safe-area-inset-bottom)]` with `safe-area-top safe-area-bottom`
 
-- Az új favicon név miatt a böngészők kénytelenek újra lekérni az ikont.
-- Helyes `type` és `sizes` attribútumok, plusz `apple-touch-icon` támogatás.
+- **`src/pages/Team.tsx`** — outer `<div className="min-h-svh md:h-full ... pb-[env(safe-area-inset-bottom)]">`
+  → replace `pb-[env(safe-area-inset-bottom)]` with `safe-area-top safe-area-bottom`
+
+- **`src/pages/Projects.tsx`** — outer wrapper → add `safe-area-top safe-area-bottom` (and remove inline safe-area pb if present)
+
+- **`src/pages/Contact.tsx`** — outer wrapper currently has `pb-[calc(clamp(48px,10vw,80px)+env(safe-area-inset-bottom))]`. Replace with `pb-[clamp(48px,10vw,80px)] safe-area-top safe-area-bottom` so the calc no longer needs the env var inline.
+
+### Notes
+
+- `safe-area-top` / `safe-area-bottom` add **padding**, so the page's existing background extends into the notch and home-indicator zones — no white strips, no hardcoded colors.
+- On desktop, `env(safe-area-inset-*)` resolves to `0`, so there's zero visual change on desktop.
+- This requires `viewport-fit=cover` in `index.html`'s viewport meta — which was already added in the previous fix, so no change there.
+- No layout, component, or other styling changes.
+
+### Files to edit
+1. `src/index.css` — add the `@supports` block
+2. `src/pages/Index.tsx`
+3. `src/pages/About.tsx`
+4. `src/pages/Team.tsx`
+5. `src/pages/Projects.tsx`
+6. `src/pages/Contact.tsx`
